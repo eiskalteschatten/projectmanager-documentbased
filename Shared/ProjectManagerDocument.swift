@@ -7,6 +7,7 @@
 
 import SwiftUI
 import UniformTypeIdentifiers
+import GRDB
 
 extension UTType {
     static var projectPackage: UTType {
@@ -15,6 +16,8 @@ extension UTType {
 }
 
 struct ProjectManagerDocument: FileDocument {
+    private let DB_NAME = "db.sqlite"
+    
     var text: String
 
     init(text: String = "Hello, world!") {
@@ -33,7 +36,21 @@ struct ProjectManagerDocument: FileDocument {
     }
     
     func fileWrapper(configuration: WriteConfiguration) throws -> FileWrapper {
+        let rootDirectory = FileWrapper(directoryWithFileWrappers: [:])
+        
+        let resourcesDirectory = FileWrapper(directoryWithFileWrappers: [:])
+        resourcesDirectory.filename = "Resources"
+        resourcesDirectory.preferredFilename = "Resources"
+        
         let data = text.data(using: .utf8)!
-        return .init(regularFileWithContents: data)
+        let wrapper = FileWrapper(regularFileWithContents: data)
+        wrapper.filename = "test.txt"
+        wrapper.preferredFilename = "test.txt"
+        
+        resourcesDirectory.addFileWrapper(wrapper)
+        
+        rootDirectory.addFileWrapper(resourcesDirectory)
+        
+        return rootDirectory
     }
 }
