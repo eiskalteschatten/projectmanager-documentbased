@@ -17,7 +17,6 @@ extension UTType {
 
 struct ProjectManagerDocument: FileDocument {
     private let DB_NAME = "db.sqlite"
-    private let TEST_TXT_NAME = "test.txt"
     private let RESOURCES_DIR = "Resources"
     
     var text: String = ""
@@ -37,14 +36,23 @@ struct ProjectManagerDocument: FileDocument {
         let resourcesDirectory = wrappers[RESOURCES_DIR]
         let resourcesFiles = resourcesDirectory?.fileWrappers
         
-        if let testTxtFile = resourcesFiles?[TEST_TXT_NAME] {
-            guard let data = testTxtFile.regularFileContents,
-                let string = String(data: data, encoding: .utf8)
-            else {
+        if let dbFile = resourcesFiles?[DB_NAME] {
+            do {
+                guard let dbFilename = dbFile.filename else {
+                    throw CocoaError(.fileReadCorruptFile)
+                }
+                
+                let dbQueue = try DatabaseQueue(path: dbFilename)
+                
+                try dbQueue.read { db in
+                    let test = try Test.fetchOne(db)!
+                    text = test.text
+                }
+            }
+            catch let error {
+                print(error.localizedDescription)
                 throw CocoaError(.fileReadCorruptFile)
             }
-            
-            text = string
         }
     }
     
@@ -56,14 +64,13 @@ struct ProjectManagerDocument: FileDocument {
         resourcesDirectory.preferredFilename = RESOURCES_DIR
         
         let data = text.data(using: .utf8)!
-        let wrapper = FileWrapper(regularFileWithContents: data)
-        wrapper.filename = TEST_TXT_NAME
-        wrapper.preferredFilename = TEST_TXT_NAME
+        let dbWrapper = FileWrapper(regularFileWithContents: data)
+        dbWrapper.filename = DB_NAME
+        dbWrapper.preferredFilename = DB_NAME
         
-        resourcesDirectory.addFileWrapper(wrapper)
+        resourcesDirectory.addFileWrapper(dbWrapper)
         
         rootDirectory.addFileWrapper(resourcesDirectory)
-        
         return rootDirectory
     }
 }
