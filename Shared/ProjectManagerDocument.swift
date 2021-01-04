@@ -63,13 +63,23 @@ struct ProjectManagerDocument: FileDocument {
         resourcesDirectory.filename = RESOURCES_DIR
         resourcesDirectory.preferredFilename = RESOURCES_DIR
         
-        let data = text.data(using: .utf8)!
-        let dbWrapper = FileWrapper(regularFileWithContents: data)
-        dbWrapper.filename = DB_NAME
-        dbWrapper.preferredFilename = DB_NAME
-        
-        resourcesDirectory.addFileWrapper(dbWrapper)
-        
+        if configuration.existingFile == nil {
+            do {
+                let url = URL(fileURLWithPath: NSTemporaryDirectory()).appendingPathComponent(DB_NAME)
+                let _ = try DatabaseQueue(path: url.absoluteString)
+                
+                let dbWrapper = try FileWrapper(url: url)
+                dbWrapper.filename = DB_NAME
+                dbWrapper.preferredFilename = DB_NAME
+                
+                resourcesDirectory.addFileWrapper(dbWrapper)
+            }
+            catch let error {
+                print(error.localizedDescription)
+            }
+
+        }
+            
         rootDirectory.addFileWrapper(resourcesDirectory)
         return rootDirectory
     }
