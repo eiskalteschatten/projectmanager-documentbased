@@ -47,8 +47,8 @@ struct ProjectManagerDocument: FileDocument {
                 runDbMigrations(dbQueue: self.dbQueue!)
                 
                 try self.dbQueue!.read { db in
-                    let projectInfo = try ProjectInfo.fetchOne(db)!
-                    self.projectName = projectInfo.name
+                    let projectInfo = try ProjectInfo.fetchOne(db)
+                    self.projectName = projectInfo?.name ?? ""
                 }
             }
             catch let error {
