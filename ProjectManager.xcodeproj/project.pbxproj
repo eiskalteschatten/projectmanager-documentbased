@@ -7,10 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		93381CDC25A37EF4000B881F /* TestRecord.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93381CDB25A37EF4000B881F /* TestRecord.swift */; };
-		93381CEF25A38078000B881F /* TestDM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93381CEE25A38078000B881F /* TestDM.swift */; };
-		936F5DA625A382F900C86CA3 /* TestDM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93381CEE25A38078000B881F /* TestDM.swift */; };
-		936F5DAB25A382FE00C86CA3 /* TestRecord.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93381CDB25A37EF4000B881F /* TestRecord.swift */; };
+		93381CDC25A37EF4000B881F /* ProjectInfoRecord.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93381CDB25A37EF4000B881F /* ProjectInfoRecord.swift */; };
+		93381CEF25A38078000B881F /* ProjectInfoDM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93381CEE25A38078000B881F /* ProjectInfoDM.swift */; };
+		936F5DA625A382F900C86CA3 /* ProjectInfoDM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93381CEE25A38078000B881F /* ProjectInfoDM.swift */; };
+		936F5DAB25A382FE00C86CA3 /* ProjectInfoRecord.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93381CDB25A37EF4000B881F /* ProjectInfoRecord.swift */; };
 		93833D1D25A371A9005FF3C0 /* GRDB in Frameworks */ = {isa = PBXBuildFile; productRef = 93833D1C25A371A9005FF3C0 /* GRDB */; };
 		93833D2825A371E8005FF3C0 /* GRDB in Frameworks */ = {isa = PBXBuildFile; productRef = 93833D2725A371E8005FF3C0 /* GRDB */; };
 		93833D3225A37384005FF3C0 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93833D3125A37384005FF3C0 /* Constants.swift */; };
@@ -45,8 +45,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		93381CDB25A37EF4000B881F /* TestRecord.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestRecord.swift; sourceTree = "<group>"; };
-		93381CEE25A38078000B881F /* TestDM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestDM.swift; sourceTree = "<group>"; };
+		93381CDB25A37EF4000B881F /* ProjectInfoRecord.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectInfoRecord.swift; sourceTree = "<group>"; };
+		93381CEE25A38078000B881F /* ProjectInfoDM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectInfoDM.swift; sourceTree = "<group>"; };
 		93833D3125A37384005FF3C0 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		93E1357E25A32D1C003F7423 /* ProjectManagerApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectManagerApp.swift; sourceTree = "<group>"; };
 		93E1357F25A32D1C003F7423 /* ProjectManagerDocument.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectManagerDocument.swift; sourceTree = "<group>"; };
@@ -102,7 +102,7 @@
 		93381CD625A37EEA000B881F /* Records */ = {
 			isa = PBXGroup;
 			children = (
-				93381CDB25A37EF4000B881F /* TestRecord.swift */,
+				93381CDB25A37EF4000B881F /* ProjectInfoRecord.swift */,
 			);
 			path = Records;
 			sourceTree = "<group>";
@@ -110,7 +110,7 @@
 		93381CED25A38050000B881F /* ViewDataModels */ = {
 			isa = PBXGroup;
 			children = (
-				93381CEE25A38078000B881F /* TestDM.swift */,
+				93381CEE25A38078000B881F /* ProjectInfoDM.swift */,
 			);
 			path = ViewDataModels;
 			sourceTree = "<group>";
@@ -371,10 +371,10 @@
 			files = (
 				93E135AA25A32D1C003F7423 /* ProjectManagerDocument.swift in Sources */,
 				93E135A825A32D1C003F7423 /* ProjectManagerApp.swift in Sources */,
-				93381CDC25A37EF4000B881F /* TestRecord.swift in Sources */,
+				93381CDC25A37EF4000B881F /* ProjectInfoRecord.swift in Sources */,
 				93E135AC25A32D1C003F7423 /* ContentView.swift in Sources */,
 				93833D3225A37384005FF3C0 /* Constants.swift in Sources */,
-				93381CEF25A38078000B881F /* TestDM.swift in Sources */,
+				93381CEF25A38078000B881F /* ProjectInfoDM.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -384,10 +384,10 @@
 			files = (
 				93E135AB25A32D1C003F7423 /* ProjectManagerDocument.swift in Sources */,
 				93E135A925A32D1C003F7423 /* ProjectManagerApp.swift in Sources */,
-				936F5DAB25A382FE00C86CA3 /* TestRecord.swift in Sources */,
+				936F5DAB25A382FE00C86CA3 /* ProjectInfoRecord.swift in Sources */,
 				93E135AD25A32D1C003F7423 /* ContentView.swift in Sources */,
 				93833D3325A37384005FF3C0 /* Constants.swift in Sources */,
-				936F5DA625A382F900C86CA3 /* TestDM.swift in Sources */,
+				936F5DA625A382F900C86CA3 /* ProjectInfoDM.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

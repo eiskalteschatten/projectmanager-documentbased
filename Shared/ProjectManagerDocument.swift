@@ -19,11 +19,11 @@ struct ProjectManagerDocument: FileDocument {
     private let DB_NAME = "db.sqlite"
     private let RESOURCES_DIR = "Resources"
     
-    var text: String = ""
+    var projectName: String = ""
     var dbQueue: DatabaseWriter?
 
-    init(text: String = "Hello, world!") {
-        self.text = text
+    init(projectName: String = "Hello, world!") {
+        self.projectName = projectName
     }
 
     static var readableContentTypes: [UTType] { [.projectPackage] }
@@ -46,8 +46,8 @@ struct ProjectManagerDocument: FileDocument {
                 self.dbQueue = try DatabaseQueue(path: dbFilename)
                 
                 try self.dbQueue!.read { db in
-                    let test = try Test.fetchOne(db)!
-                    self.text = test.text
+                    let projectInfo = try ProjectInfo.fetchOne(db)!
+                    self.projectName = projectInfo.name
                 }
             }
             catch let error {
