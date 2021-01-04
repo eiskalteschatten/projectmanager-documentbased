@@ -101,9 +101,9 @@
 		93E1357D25A32D1C003F7423 /* Shared */ = {
 			isa = PBXGroup;
 			children = (
+				93E135C225A32D67003F7423 /* Views */,
 				93E1357E25A32D1C003F7423 /* ProjectManagerApp.swift */,
 				93E1357F25A32D1C003F7423 /* ProjectManagerDocument.swift */,
-				93E1358025A32D1C003F7423 /* ContentView.swift */,
 				93E1358125A32D1C003F7423 /* Assets.xcassets */,
 			);
 			path = Shared;
@@ -153,6 +153,14 @@
 				93E135A725A32D1C003F7423 /* Info.plist */,
 			);
 			path = "Tests macOS";
+			sourceTree = "<group>";
+		};
+		93E135C225A32D67003F7423 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				93E1358025A32D1C003F7423 /* ContentView.swift */,
+			);
+			path = Views;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
