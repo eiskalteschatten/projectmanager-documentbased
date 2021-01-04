@@ -20,6 +20,7 @@ struct ProjectManagerDocument: FileDocument {
     private let RESOURCES_DIR = "Resources"
     
     var text: String = ""
+    var dbQueue: DatabaseWriter?
 
     init(text: String = "Hello, world!") {
         self.text = text
@@ -42,11 +43,11 @@ struct ProjectManagerDocument: FileDocument {
                     throw CocoaError(.fileReadCorruptFile)
                 }
                 
-                let dbQueue = try DatabaseQueue(path: dbFilename)
+                self.dbQueue = try DatabaseQueue(path: dbFilename)
                 
-                try dbQueue.read { db in
+                try self.dbQueue!.read { db in
                     let test = try Test.fetchOne(db)!
-                    text = test.text
+                    self.text = test.text
                 }
             }
             catch let error {
@@ -77,7 +78,6 @@ struct ProjectManagerDocument: FileDocument {
             catch let error {
                 print(error.localizedDescription)
             }
-
         }
             
         rootDirectory.addFileWrapper(resourcesDirectory)
