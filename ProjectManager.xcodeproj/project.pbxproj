@@ -11,6 +11,8 @@
 		93381CEF25A38078000B881F /* ProjectInfoDM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93381CEE25A38078000B881F /* ProjectInfoDM.swift */; };
 		936F5DA625A382F900C86CA3 /* ProjectInfoDM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93381CEE25A38078000B881F /* ProjectInfoDM.swift */; };
 		936F5DAB25A382FE00C86CA3 /* ProjectInfoRecord.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93381CDB25A37EF4000B881F /* ProjectInfoRecord.swift */; };
+		936F5DBF25A39DD000C86CA3 /* DbMigrations.swift in Sources */ = {isa = PBXBuildFile; fileRef = 936F5DBE25A39DD000C86CA3 /* DbMigrations.swift */; };
+		936F5DC025A39DD000C86CA3 /* DbMigrations.swift in Sources */ = {isa = PBXBuildFile; fileRef = 936F5DBE25A39DD000C86CA3 /* DbMigrations.swift */; };
 		93833D1D25A371A9005FF3C0 /* GRDB in Frameworks */ = {isa = PBXBuildFile; productRef = 93833D1C25A371A9005FF3C0 /* GRDB */; };
 		93833D2825A371E8005FF3C0 /* GRDB in Frameworks */ = {isa = PBXBuildFile; productRef = 93833D2725A371E8005FF3C0 /* GRDB */; };
 		93833D3225A37384005FF3C0 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93833D3125A37384005FF3C0 /* Constants.swift */; };
@@ -47,6 +49,7 @@
 /* Begin PBXFileReference section */
 		93381CDB25A37EF4000B881F /* ProjectInfoRecord.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectInfoRecord.swift; sourceTree = "<group>"; };
 		93381CEE25A38078000B881F /* ProjectInfoDM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectInfoDM.swift; sourceTree = "<group>"; };
+		936F5DBE25A39DD000C86CA3 /* DbMigrations.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DbMigrations.swift; sourceTree = "<group>"; };
 		93833D3125A37384005FF3C0 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		93E1357E25A32D1C003F7423 /* ProjectManagerApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectManagerApp.swift; sourceTree = "<group>"; };
 		93E1357F25A32D1C003F7423 /* ProjectManagerDocument.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectManagerDocument.swift; sourceTree = "<group>"; };
@@ -143,6 +146,7 @@
 				93E135C225A32D67003F7423 /* Views */,
 				93E1357E25A32D1C003F7423 /* ProjectManagerApp.swift */,
 				93E1357F25A32D1C003F7423 /* ProjectManagerDocument.swift */,
+				936F5DBE25A39DD000C86CA3 /* DbMigrations.swift */,
 				93833D3125A37384005FF3C0 /* Constants.swift */,
 				93E1358125A32D1C003F7423 /* Assets.xcassets */,
 			);
@@ -369,6 +373,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				936F5DBF25A39DD000C86CA3 /* DbMigrations.swift in Sources */,
 				93E135AA25A32D1C003F7423 /* ProjectManagerDocument.swift in Sources */,
 				93E135A825A32D1C003F7423 /* ProjectManagerApp.swift in Sources */,
 				93381CDC25A37EF4000B881F /* ProjectInfoRecord.swift in Sources */,
@@ -382,6 +387,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				936F5DC025A39DD000C86CA3 /* DbMigrations.swift in Sources */,
 				93E135AB25A32D1C003F7423 /* ProjectManagerDocument.swift in Sources */,
 				93E135A925A32D1C003F7423 /* ProjectManagerApp.swift in Sources */,
 				936F5DAB25A382FE00C86CA3 /* ProjectInfoRecord.swift in Sources */,

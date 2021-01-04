@@ -44,6 +44,7 @@ struct ProjectManagerDocument: FileDocument {
                 }
                 
                 self.dbQueue = try DatabaseQueue(path: dbFilename)
+                runDbMigrations(dbQueue: self.dbQueue!)
                 
                 try self.dbQueue!.read { db in
                     let projectInfo = try ProjectInfo.fetchOne(db)!
@@ -67,7 +68,8 @@ struct ProjectManagerDocument: FileDocument {
         if configuration.existingFile == nil {
             do {
                 let url = URL(fileURLWithPath: NSTemporaryDirectory()).appendingPathComponent(DB_NAME)
-                let _ = try DatabaseQueue(path: url.absoluteString)
+                let dbQueue = try DatabaseQueue(path: url.absoluteString)
+                runDbMigrations(dbQueue: dbQueue)
                 
                 let dbWrapper = try FileWrapper(url: url)
                 dbWrapper.filename = DB_NAME
