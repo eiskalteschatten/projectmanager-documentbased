@@ -73,16 +73,18 @@
 				<string>public.plain-text</string>
 			</array>
 			<key>UTTypeDescription</key>
-            <string>ProjectManager Project</string>
-            <key>UTTypeIdentifier</key>
-            <string>com.alexseifert.projectManagerProject</string>
-            <key>UTTypeTagSpecification</key>
-            <dict>
-                <key>public.filename-extension</key>
-                <array>
-                    <string>projman</string>
-                </array>
-            </dict>
+			<string>ProjectManager Project</string>
+			<key>UTTypeIconFiles</key>
+			<array/>
+			<key>UTTypeIdentifier</key>
+			<string>com.alexseifert.projectManagerProject</string>
+			<key>UTTypeTagSpecification</key>
+			<dict>
+				<key>public.filename-extension</key>
+				<array>
+					<string>projman</string>
+				</array>
+			</dict>
 		</dict>
 	</array>
 </dict>

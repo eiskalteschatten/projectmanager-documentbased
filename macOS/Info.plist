@@ -7,6 +7,8 @@
 	<key>CFBundleDocumentTypes</key>
 	<array>
 		<dict>
+			<key>CFBundleTypeName</key>
+			<string>Project</string>
 			<key>CFBundleTypeRole</key>
 			<string>Editor</string>
 			<key>LSHandlerRank</key>
@@ -50,6 +52,8 @@
 			</array>
 			<key>UTTypeDescription</key>
 			<string>ProjectManager Project</string>
+			<key>UTTypeIcons</key>
+			<dict/>
 			<key>UTTypeIdentifier</key>
 			<string>com.alexseifert.projectManagerProject</string>
 			<key>UTTypeTagSpecification</key>
