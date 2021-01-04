@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		93833D1D25A371A9005FF3C0 /* GRDB in Frameworks */ = {isa = PBXBuildFile; productRef = 93833D1C25A371A9005FF3C0 /* GRDB */; };
 		93833D2825A371E8005FF3C0 /* GRDB in Frameworks */ = {isa = PBXBuildFile; productRef = 93833D2725A371E8005FF3C0 /* GRDB */; };
+		93833D3225A37384005FF3C0 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93833D3125A37384005FF3C0 /* Constants.swift */; };
+		93833D3325A37384005FF3C0 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93833D3125A37384005FF3C0 /* Constants.swift */; };
 		93E1359B25A32D1C003F7423 /* Tests_iOS.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93E1359A25A32D1C003F7423 /* Tests_iOS.swift */; };
 		93E135A625A32D1C003F7423 /* Tests_macOS.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93E135A525A32D1C003F7423 /* Tests_macOS.swift */; };
 		93E135A825A32D1C003F7423 /* ProjectManagerApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93E1357E25A32D1C003F7423 /* ProjectManagerApp.swift */; };
@@ -39,6 +41,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		93833D3125A37384005FF3C0 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		93E1357E25A32D1C003F7423 /* ProjectManagerApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectManagerApp.swift; sourceTree = "<group>"; };
 		93E1357F25A32D1C003F7423 /* ProjectManagerDocument.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectManagerDocument.swift; sourceTree = "<group>"; };
 		93E1358025A32D1C003F7423 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -124,6 +127,7 @@
 				93E135C225A32D67003F7423 /* Views */,
 				93E1357E25A32D1C003F7423 /* ProjectManagerApp.swift */,
 				93E1357F25A32D1C003F7423 /* ProjectManagerDocument.swift */,
+				93833D3125A37384005FF3C0 /* Constants.swift */,
 				93E1358125A32D1C003F7423 /* Assets.xcassets */,
 			);
 			path = Shared;
@@ -352,6 +356,7 @@
 				93E135AA25A32D1C003F7423 /* ProjectManagerDocument.swift in Sources */,
 				93E135A825A32D1C003F7423 /* ProjectManagerApp.swift in Sources */,
 				93E135AC25A32D1C003F7423 /* ContentView.swift in Sources */,
+				93833D3225A37384005FF3C0 /* Constants.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -362,6 +367,7 @@
 				93E135AB25A32D1C003F7423 /* ProjectManagerDocument.swift in Sources */,
 				93E135A925A32D1C003F7423 /* ProjectManagerApp.swift in Sources */,
 				93E135AD25A32D1C003F7423 /* ContentView.swift in Sources */,
+				93833D3325A37384005FF3C0 /* Constants.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
