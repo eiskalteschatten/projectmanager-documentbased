@@ -7,8 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		93381CDC25A37EF4000B881F /* ProjectInfoModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93381CDB25A37EF4000B881F /* ProjectInfoModel.swift */; };
-		936F5DAB25A382FE00C86CA3 /* ProjectInfoModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93381CDB25A37EF4000B881F /* ProjectInfoModel.swift */; };
 		93833D3225A37384005FF3C0 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93833D3125A37384005FF3C0 /* Constants.swift */; };
 		93833D3325A37384005FF3C0 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93833D3125A37384005FF3C0 /* Constants.swift */; };
 		93D60F3725BA32D40040DE9F /* ProjectModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93D60F3625BA32D40040DE9F /* ProjectModel.swift */; };
@@ -43,7 +41,6 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		93381CDB25A37EF4000B881F /* ProjectInfoModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectInfoModel.swift; sourceTree = "<group>"; };
 		93833D3125A37384005FF3C0 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		93D60F3625BA32D40040DE9F /* ProjectModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectModel.swift; sourceTree = "<group>"; };
 		93E1357E25A32D1C003F7423 /* ProjectManagerApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectManagerApp.swift; sourceTree = "<group>"; };
@@ -98,7 +95,6 @@
 		93381CD625A37EEA000B881F /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				93381CDB25A37EF4000B881F /* ProjectInfoModel.swift */,
 				93D60F3625BA32D40040DE9F /* ProjectModel.swift */,
 			);
 			path = Models;
@@ -357,7 +353,6 @@
 				93E135AA25A32D1C003F7423 /* ProjectManagerDocument.swift in Sources */,
 				93E135A825A32D1C003F7423 /* ProjectManagerApp.swift in Sources */,
 				93D60F3725BA32D40040DE9F /* ProjectModel.swift in Sources */,
-				93381CDC25A37EF4000B881F /* ProjectInfoModel.swift in Sources */,
 				93E135AC25A32D1C003F7423 /* ContentView.swift in Sources */,
 				93833D3225A37384005FF3C0 /* Constants.swift in Sources */,
 			);
@@ -370,7 +365,6 @@
 				93E135AB25A32D1C003F7423 /* ProjectManagerDocument.swift in Sources */,
 				93E135A925A32D1C003F7423 /* ProjectManagerApp.swift in Sources */,
 				93D60F3825BA32D40040DE9F /* ProjectModel.swift in Sources */,
-				936F5DAB25A382FE00C86CA3 /* ProjectInfoModel.swift in Sources */,
 				93E135AD25A32D1C003F7423 /* ContentView.swift in Sources */,
 				93833D3325A37384005FF3C0 /* Constants.swift in Sources */,
 			);
