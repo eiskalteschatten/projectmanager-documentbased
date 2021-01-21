@@ -18,9 +18,7 @@ struct ContentView: View {
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
         ContentView(document: .constant(ProjectManagerDocument(
-            project:
-                Project(name: "Test Project", description: "Test description")
-            )
-        ))
+            name: "Test Project", description: "Test description"
+        )))
     }
 }

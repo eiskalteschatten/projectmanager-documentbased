@@ -15,7 +15,7 @@ extension UTType {
 }
 
 struct ProjectManagerDocument: FileDocument {
-    var project: Project?
+    var project: Project
 
     init(name: String = "", description: String = "") {
         self.project = Project(name: name, description: description)
