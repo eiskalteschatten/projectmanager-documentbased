@@ -3,20 +3,16 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 52;
+	objectVersion = 50;
 	objects = {
 
 /* Begin PBXBuildFile section */
-		93381CDC25A37EF4000B881F /* ProjectInfoRecord.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93381CDB25A37EF4000B881F /* ProjectInfoRecord.swift */; };
-		93381CEF25A38078000B881F /* ProjectInfoDM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93381CEE25A38078000B881F /* ProjectInfoDM.swift */; };
-		936F5DA625A382F900C86CA3 /* ProjectInfoDM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93381CEE25A38078000B881F /* ProjectInfoDM.swift */; };
-		936F5DAB25A382FE00C86CA3 /* ProjectInfoRecord.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93381CDB25A37EF4000B881F /* ProjectInfoRecord.swift */; };
-		936F5DBF25A39DD000C86CA3 /* DbMigrations.swift in Sources */ = {isa = PBXBuildFile; fileRef = 936F5DBE25A39DD000C86CA3 /* DbMigrations.swift */; };
-		936F5DC025A39DD000C86CA3 /* DbMigrations.swift in Sources */ = {isa = PBXBuildFile; fileRef = 936F5DBE25A39DD000C86CA3 /* DbMigrations.swift */; };
-		93833D1D25A371A9005FF3C0 /* GRDB in Frameworks */ = {isa = PBXBuildFile; productRef = 93833D1C25A371A9005FF3C0 /* GRDB */; };
-		93833D2825A371E8005FF3C0 /* GRDB in Frameworks */ = {isa = PBXBuildFile; productRef = 93833D2725A371E8005FF3C0 /* GRDB */; };
+		93381CDC25A37EF4000B881F /* ProjectInfoModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93381CDB25A37EF4000B881F /* ProjectInfoModel.swift */; };
+		936F5DAB25A382FE00C86CA3 /* ProjectInfoModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93381CDB25A37EF4000B881F /* ProjectInfoModel.swift */; };
 		93833D3225A37384005FF3C0 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93833D3125A37384005FF3C0 /* Constants.swift */; };
 		93833D3325A37384005FF3C0 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93833D3125A37384005FF3C0 /* Constants.swift */; };
+		93D60F3725BA32D40040DE9F /* ProjectModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93D60F3625BA32D40040DE9F /* ProjectModel.swift */; };
+		93D60F3825BA32D40040DE9F /* ProjectModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93D60F3625BA32D40040DE9F /* ProjectModel.swift */; };
 		93E1359B25A32D1C003F7423 /* Tests_iOS.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93E1359A25A32D1C003F7423 /* Tests_iOS.swift */; };
 		93E135A625A32D1C003F7423 /* Tests_macOS.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93E135A525A32D1C003F7423 /* Tests_macOS.swift */; };
 		93E135A825A32D1C003F7423 /* ProjectManagerApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93E1357E25A32D1C003F7423 /* ProjectManagerApp.swift */; };
@@ -47,10 +43,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		93381CDB25A37EF4000B881F /* ProjectInfoRecord.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectInfoRecord.swift; sourceTree = "<group>"; };
-		93381CEE25A38078000B881F /* ProjectInfoDM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectInfoDM.swift; sourceTree = "<group>"; };
-		936F5DBE25A39DD000C86CA3 /* DbMigrations.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DbMigrations.swift; sourceTree = "<group>"; };
+		93381CDB25A37EF4000B881F /* ProjectInfoModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectInfoModel.swift; sourceTree = "<group>"; };
 		93833D3125A37384005FF3C0 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		93D60F3625BA32D40040DE9F /* ProjectModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectModel.swift; sourceTree = "<group>"; };
 		93E1357E25A32D1C003F7423 /* ProjectManagerApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectManagerApp.swift; sourceTree = "<group>"; };
 		93E1357F25A32D1C003F7423 /* ProjectManagerDocument.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectManagerDocument.swift; sourceTree = "<group>"; };
 		93E1358025A32D1C003F7423 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -73,7 +68,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				93833D1D25A371A9005FF3C0 /* GRDB in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -81,7 +75,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				93833D2825A371E8005FF3C0 /* GRDB in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -102,20 +95,13 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		93381CD625A37EEA000B881F /* Records */ = {
+		93381CD625A37EEA000B881F /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				93381CDB25A37EF4000B881F /* ProjectInfoRecord.swift */,
+				93381CDB25A37EF4000B881F /* ProjectInfoModel.swift */,
+				93D60F3625BA32D40040DE9F /* ProjectModel.swift */,
 			);
-			path = Records;
-			sourceTree = "<group>";
-		};
-		93381CED25A38050000B881F /* ViewDataModels */ = {
-			isa = PBXGroup;
-			children = (
-				93381CEE25A38078000B881F /* ProjectInfoDM.swift */,
-			);
-			path = ViewDataModels;
+			path = Models;
 			sourceTree = "<group>";
 		};
 		93833D2625A371E8005FF3C0 /* Frameworks */ = {
@@ -141,12 +127,10 @@
 		93E1357D25A32D1C003F7423 /* Shared */ = {
 			isa = PBXGroup;
 			children = (
-				93381CD625A37EEA000B881F /* Records */,
-				93381CED25A38050000B881F /* ViewDataModels */,
+				93381CD625A37EEA000B881F /* Models */,
 				93E135C225A32D67003F7423 /* Views */,
 				93E1357E25A32D1C003F7423 /* ProjectManagerApp.swift */,
 				93E1357F25A32D1C003F7423 /* ProjectManagerDocument.swift */,
-				936F5DBE25A39DD000C86CA3 /* DbMigrations.swift */,
 				93833D3125A37384005FF3C0 /* Constants.swift */,
 				93E1358125A32D1C003F7423 /* Assets.xcassets */,
 			);
@@ -224,7 +208,6 @@
 			);
 			name = "ProjectManager (iOS)";
 			packageProductDependencies = (
-				93833D1C25A371A9005FF3C0 /* GRDB */,
 			);
 			productName = "ProjectManager (iOS)";
 			productReference = 93E1358625A32D1C003F7423 /* ProjectManager.app */;
@@ -244,7 +227,6 @@
 			);
 			name = "ProjectManager (macOS)";
 			packageProductDependencies = (
-				93833D2725A371E8005FF3C0 /* GRDB */,
 			);
 			productName = "ProjectManager (macOS)";
 			productReference = 93E1358E25A32D1C003F7423 /* ProjectManager.app */;
@@ -321,7 +303,6 @@
 			);
 			mainGroup = 93E1357825A32D1B003F7423;
 			packageReferences = (
-				93833D1B25A371A9005FF3C0 /* XCRemoteSwiftPackageReference "GRDB.swift" */,
 			);
 			productRefGroup = 93E1358725A32D1C003F7423 /* Products */;
 			projectDirPath = "";
@@ -373,13 +354,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				936F5DBF25A39DD000C86CA3 /* DbMigrations.swift in Sources */,
 				93E135AA25A32D1C003F7423 /* ProjectManagerDocument.swift in Sources */,
 				93E135A825A32D1C003F7423 /* ProjectManagerApp.swift in Sources */,
-				93381CDC25A37EF4000B881F /* ProjectInfoRecord.swift in Sources */,
+				93D60F3725BA32D40040DE9F /* ProjectModel.swift in Sources */,
+				93381CDC25A37EF4000B881F /* ProjectInfoModel.swift in Sources */,
 				93E135AC25A32D1C003F7423 /* ContentView.swift in Sources */,
 				93833D3225A37384005FF3C0 /* Constants.swift in Sources */,
-				93381CEF25A38078000B881F /* ProjectInfoDM.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -387,13 +367,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				936F5DC025A39DD000C86CA3 /* DbMigrations.swift in Sources */,
 				93E135AB25A32D1C003F7423 /* ProjectManagerDocument.swift in Sources */,
 				93E135A925A32D1C003F7423 /* ProjectManagerApp.swift in Sources */,
-				936F5DAB25A382FE00C86CA3 /* ProjectInfoRecord.swift in Sources */,
+				93D60F3825BA32D40040DE9F /* ProjectModel.swift in Sources */,
+				936F5DAB25A382FE00C86CA3 /* ProjectInfoModel.swift in Sources */,
 				93E135AD25A32D1C003F7423 /* ContentView.swift in Sources */,
 				93833D3325A37384005FF3C0 /* Constants.swift in Sources */,
-				936F5DA625A382F900C86CA3 /* ProjectInfoDM.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -771,30 +750,6 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
-
-/* Begin XCRemoteSwiftPackageReference section */
-		93833D1B25A371A9005FF3C0 /* XCRemoteSwiftPackageReference "GRDB.swift" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/groue/GRDB.swift.git";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 5.2.0;
-			};
-		};
-/* End XCRemoteSwiftPackageReference section */
-
-/* Begin XCSwiftPackageProductDependency section */
-		93833D1C25A371A9005FF3C0 /* GRDB */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 93833D1B25A371A9005FF3C0 /* XCRemoteSwiftPackageReference "GRDB.swift" */;
-			productName = GRDB;
-		};
-		93833D2725A371E8005FF3C0 /* GRDB */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 93833D1B25A371A9005FF3C0 /* XCRemoteSwiftPackageReference "GRDB.swift" */;
-			productName = GRDB;
-		};
-/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 93E1357925A32D1B003F7423 /* Project object */;
 }

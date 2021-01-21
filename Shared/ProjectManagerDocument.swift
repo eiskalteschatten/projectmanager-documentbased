@@ -7,7 +7,6 @@
 
 import SwiftUI
 import UniformTypeIdentifiers
-import GRDB
 
 extension UTType {
     static var projectPackage: UTType {
@@ -16,73 +15,23 @@ extension UTType {
 }
 
 struct ProjectManagerDocument: FileDocument {
-    private let DB_NAME = "db.sqlite"
-    private let RESOURCES_DIR = "Resources"
-    
-    var projectName: String = ""
-    var dbQueue: DatabaseWriter?
+    var project: Project?
 
-    init(projectName: String = "Hello, world!") {
-        self.projectName = projectName
+    init(project: Project? = nil) {
+        self.project = project
     }
 
     static var readableContentTypes: [UTType] { [.projectPackage] }
 
     init(configuration: ReadConfiguration) throws {
-        guard let wrappers = configuration.file.fileWrappers
-        else {
-            throw CocoaError(.fileReadCorruptFile)
+        guard let data = configuration.file.regularFileContents else {
+          throw CocoaError(.fileReadCorruptFile)
         }
-        
-        let resourcesDirectory = wrappers[RESOURCES_DIR]
-        let resourcesFiles = resourcesDirectory?.fileWrappers
-        
-        if let dbFile = resourcesFiles?[DB_NAME] {
-            do {
-                guard let dbFilename = dbFile.filename else {
-                    throw CocoaError(.fileReadCorruptFile)
-                }
-                
-                self.dbQueue = try DatabaseQueue(path: dbFilename)
-                runDbMigrations(dbQueue: self.dbQueue!)
-                
-                try self.dbQueue!.read { db in
-                    let projectInfo = try ProjectInfo.fetchOne(db)
-                    self.projectName = projectInfo?.name ?? ""
-                }
-            }
-            catch let error {
-                print(error.localizedDescription)
-                throw CocoaError(.fileReadCorruptFile)
-            }
-        }
+        self.project = try JSONDecoder().decode(Project.self, from: data)
     }
     
     func fileWrapper(configuration: WriteConfiguration) throws -> FileWrapper {
-        let rootDirectory = FileWrapper(directoryWithFileWrappers: [:])
-        
-        let resourcesDirectory = FileWrapper(directoryWithFileWrappers: [:])
-        resourcesDirectory.filename = RESOURCES_DIR
-        resourcesDirectory.preferredFilename = RESOURCES_DIR
-        
-        if configuration.existingFile == nil {
-            do {
-                let url = URL(fileURLWithPath: NSTemporaryDirectory()).appendingPathComponent(DB_NAME)
-                let dbQueue = try DatabaseQueue(path: url.absoluteString)
-                runDbMigrations(dbQueue: dbQueue)
-                
-                let dbWrapper = try FileWrapper(url: url)
-                dbWrapper.filename = DB_NAME
-                dbWrapper.preferredFilename = DB_NAME
-                
-                resourcesDirectory.addFileWrapper(dbWrapper)
-            }
-            catch let error {
-                print(error.localizedDescription)
-            }
-        }
-            
-        rootDirectory.addFileWrapper(resourcesDirectory)
-        return rootDirectory
+        let data = try JSONEncoder().encode(self.project)
+        return .init(regularFileWithContents: data)
     }
 }
