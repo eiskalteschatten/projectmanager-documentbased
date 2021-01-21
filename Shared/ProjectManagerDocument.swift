@@ -9,7 +9,7 @@ import SwiftUI
 import UniformTypeIdentifiers
 
 extension UTType {
-    static var projectPackage: UTType {
+    static var projectData: UTType {
         UTType(importedAs: "com.alexseifert.projectManagerProject")
     }
 }
@@ -21,7 +21,7 @@ struct ProjectManagerDocument: FileDocument {
         self.project = project
     }
 
-    static var readableContentTypes: [UTType] { [.projectPackage] }
+    static var readableContentTypes: [UTType] { [.projectData] }
 
     init(configuration: ReadConfiguration) throws {
         guard let data = configuration.file.regularFileContents else {
