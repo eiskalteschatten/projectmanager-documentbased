@@ -21,6 +21,7 @@
 		9392F40F25BAC5B90049C937 /* ProjectInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9392F40D25BAC5B90049C937 /* ProjectInfoView.swift */; };
 		9392F41925BAC62A0049C937 /* Mocks.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9392F41825BAC62A0049C937 /* Mocks.swift */; };
 		9392F41A25BAC62A0049C937 /* Mocks.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9392F41825BAC62A0049C937 /* Mocks.swift */; };
+		93D3829125BB39B700189D46 /* iOSImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93D3829025BB39B700189D46 /* iOSImagePicker.swift */; };
 		93D60F3725BA32D40040DE9F /* ProjectModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93D60F3625BA32D40040DE9F /* ProjectModel.swift */; };
 		93D60F3825BA32D40040DE9F /* ProjectModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93D60F3625BA32D40040DE9F /* ProjectModel.swift */; };
 		93E1359B25A32D1C003F7423 /* Tests_iOS.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93E1359A25A32D1C003F7423 /* Tests_iOS.swift */; };
@@ -60,6 +61,7 @@
 		9392F40625BAC55A0049C937 /* GlobalExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GlobalExtensions.swift; sourceTree = "<group>"; };
 		9392F40D25BAC5B90049C937 /* ProjectInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectInfoView.swift; sourceTree = "<group>"; };
 		9392F41825BAC62A0049C937 /* Mocks.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Mocks.swift; sourceTree = "<group>"; };
+		93D3829025BB39B700189D46 /* iOSImagePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = iOSImagePicker.swift; sourceTree = "<group>"; };
 		93D60F3625BA32D40040DE9F /* ProjectModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectModel.swift; sourceTree = "<group>"; };
 		93E1357E25A32D1C003F7423 /* ProjectManagerApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectManagerApp.swift; sourceTree = "<group>"; };
 		93E1357F25A32D1C003F7423 /* ProjectManagerDocument.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectManagerDocument.swift; sourceTree = "<group>"; };
@@ -207,6 +209,7 @@
 			children = (
 				93E1358025A32D1C003F7423 /* ContentView.swift */,
 				9392F40D25BAC5B90049C937 /* ProjectInfoView.swift */,
+				93D3829025BB39B700189D46 /* iOSImagePicker.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -383,6 +386,7 @@
 				9366CD0B25BAE04600B56A2D /* StateModel.swift in Sources */,
 				93D60F3725BA32D40040DE9F /* ProjectModel.swift in Sources */,
 				9392F40E25BAC5B90049C937 /* ProjectInfoView.swift in Sources */,
+				93D3829125BB39B700189D46 /* iOSImagePicker.swift in Sources */,
 				93E135AC25A32D1C003F7423 /* ContentView.swift in Sources */,
 				93833D3225A37384005FF3C0 /* Constants.swift in Sources */,
 			);

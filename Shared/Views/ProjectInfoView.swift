@@ -9,6 +9,7 @@ import SwiftUI
 
 struct ProjectInfoView: View {
     @Binding var document: ProjectManagerDocument
+    @State private var showImagePicker: Bool = false
     
     var body: some View {
         ScrollView {
@@ -56,6 +57,11 @@ struct ProjectInfoView: View {
                             print("The selected image could not be loaded: \(openPanel.url!.path)")
                         }
                     }
+                }
+                .padding(.bottom)
+                #else
+                Button("Select Project Image") {
+                    self.showImagePicker.toggle()
                 }
                 .padding(.bottom)
                 #endif
@@ -119,6 +125,15 @@ struct ProjectInfoView: View {
                 .frame(minWidth: 0, maxWidth: 400, minHeight: 0, maxHeight: .infinity)
                 .padding(.bottom)
             }.frame(minWidth: 200, maxWidth: .infinity)
+        }
+        .notMacOS() {
+            $0.sheet(isPresented: $showImagePicker) {
+                #if !os(macOS)
+                ImagePicker(sourceType: .photoLibrary) { image in
+                    document.project.projectInfo.image = image.jpegData(compressionQuality: 0)
+                }
+                #endif
+            }
         }
     }
 }
