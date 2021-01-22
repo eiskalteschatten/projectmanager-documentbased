@@ -13,10 +13,11 @@ struct ProjectInfoView: View {
     var body: some View {
         VStack {
             TextField("Project Name", text: $document.project.projectInfo.name)
-                .frame(maxWidth: 300)
+                .frame(maxWidth: 400)
+                .padding(.bottom)
             
             TextField("Project Description", text: $document.project.projectInfo.description)
-                .frame(maxWidth: 300)
+                .frame(maxWidth: 400)
         }
         .frame(minWidth: 0, maxWidth: .infinity, minHeight: 0, maxHeight: .infinity)
     }
