@@ -7,25 +7,33 @@
 
 import SwiftUI
 
+fileprivate enum ProjectScreen: Int {
+    case projectInfo
+}
+
 struct ContentView: View {
     @Binding var document: ProjectManagerDocument
+    @State private var navSelection: ProjectScreen?
 
     var body: some View {
-        VStack {
-            TextField("Project Name", text: $document.project.name)
-                .frame(maxWidth: 300)
-            
-            TextField("Project Description", text: $document.project.description)
-                .frame(maxWidth: 300)
+        NavigationView {
+            List {
+                NavigationLink(
+                    destination: ProjectInfoView(document: $document),
+                    tag: ProjectScreen.projectInfo,
+                    selection: $navSelection,
+                    label: {
+                        Label("Project Info", systemImage: "info.circle")
+                    }
+                )
+            }
         }
-        .frame(minWidth: 0, maxWidth: .infinity, minHeight: 0, maxHeight: .infinity)
+        .listStyle(SidebarListStyle())
     }
 }
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
-        ContentView(document: .constant(ProjectManagerDocument(
-            name: "Test Project", description: "Test description"
-        )))
+        ContentView(document: .constant(createMockProjectDocument()))
     }
 }

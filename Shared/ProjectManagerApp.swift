@@ -13,5 +13,8 @@ struct ProjectManagerApp: App {
         DocumentGroup(newDocument: ProjectManagerDocument()) { file in
             ContentView(document: file.$document)
         }
+        .commands {
+            SidebarCommands()
+        }
     }
 }
