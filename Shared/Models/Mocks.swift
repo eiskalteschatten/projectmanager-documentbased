@@ -7,12 +7,19 @@
 
 import Foundation
 
+func createMockStateData() -> StateModel {
+    return StateModel(screen: ProjectScreen.projectInfo.rawValue)
+}
+
 func createMockProjectInfo() -> ProjectInfo {
     return ProjectInfo(name: "Test Project", description: "Test description")
 }
 
 func createMockProject() -> Project {
-    return Project(projectInfo: createMockProjectInfo())
+    return Project(
+        state: createMockStateData(),
+        projectInfo: createMockProjectInfo()
+    )
 }
 
 func createMockProjectDocument() -> ProjectManagerDocument {

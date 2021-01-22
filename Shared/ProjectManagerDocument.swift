@@ -15,7 +15,6 @@ extension UTType {
 }
 
 struct ProjectManagerDocument: FileDocument {
-    var state: StateModel
     var project: Project
 
     init(project: Project = getDefaultProjectData()) {

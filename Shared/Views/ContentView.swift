@@ -7,36 +7,43 @@
 
 import SwiftUI
 
-fileprivate enum ProjectScreen: Int {
+enum ProjectScreen: Int {
     case projectInfo
 }
 
 struct ContentView: View {
     @Binding var document: ProjectManagerDocument
-    @State private var navSelection: ProjectScreen? = .projectInfo
+    @State private var screen: ProjectScreen? = .projectInfo
 
     var body: some View {
-        NavigationViewWrapper(projectName: document.project.projectInfo.name) {
+        NavigationViewWrapper(document: $document, screen: $screen) {
             NavigationLink(
                 destination: ProjectInfoView(document: $document),
                 tag: ProjectScreen.projectInfo,
-                selection: $navSelection,
+                selection: $screen,
                 label: {
                     Label("Project Info", systemImage: "info.circle")
                 }
             )
         }
         .navigationViewStyle(DoubleColumnNavigationViewStyle())
+        .onAppear {
+            self.screen = ProjectScreen.init(rawValue: document.project.state.screen)
+         }
     }
 }
 
 fileprivate struct NavigationViewWrapper<Content>: View where Content: View {
+    @Binding var document: ProjectManagerDocument
+    @Binding var screen: ProjectScreen?
+    
+    private var defaultProjectName: String = "ProjectManager"
     let content: () -> Content
-    var projectName: String = "ProjectManager"
 
-    init(projectName: String, @ViewBuilder content: @escaping () -> Content) {
+    init(document: Binding<ProjectManagerDocument>, screen: Binding<ProjectScreen?>, @ViewBuilder content: @escaping () -> Content) {
+        self._document = document
+        self._screen = screen
         self.content = content
-        self.projectName = projectName != "" ? projectName : self.projectName
     }
 
     var body: some View {
@@ -46,6 +53,9 @@ fileprivate struct NavigationViewWrapper<Content>: View where Content: View {
                 content()
             }
             .listStyle(SidebarListStyle())
+            .onChange(of: self.screen, perform: { _ in
+                document.project.state.screen = self.screen?.rawValue ?? ProjectScreen.projectInfo.rawValue
+            })
         }
         #else
         NavigationView {
@@ -65,7 +75,7 @@ fileprivate struct NavigationViewWrapper<Content>: View where Content: View {
                     }
                 }
             }
-            .navigationTitle(self.projectName)
+            .navigationTitle(document.project.projectInfo.name != "" ? document.project.projectInfo.name : self.defaultProjectName)
         }
         .navigationBarHidden(true)
         #endif
