@@ -31,7 +31,10 @@ struct ProjectInfoView: View {
                 
                 DatePicker(
                     "Start Date:",
-                    selection: $document.project.projectInfo.startDate,
+                    selection: Binding<Date>(
+                        get: {document.project.projectInfo.startDate ?? Date()},
+                        set: {document.project.projectInfo.startDate = $0}
+                    ),
                     displayedComponents: [.date]
                 )
                 .macOS() {
@@ -46,7 +49,10 @@ struct ProjectInfoView: View {
                 
                 DatePicker(
                     "End Date:",
-                    selection: $document.project.projectInfo.endDate,
+                    selection: Binding<Date>(
+                        get: {document.project.projectInfo.endDate ?? Date()},
+                        set: {document.project.projectInfo.endDate = $0}
+                    ),
                     displayedComponents: [.date]
                 )
                 .macOS() {

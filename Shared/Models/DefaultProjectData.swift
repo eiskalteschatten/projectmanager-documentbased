@@ -14,9 +14,7 @@ func getDefaultStateData() -> StateModel {
 func getDefaultProjectInfoData() -> ProjectInfo {
     return ProjectInfo(
         name: "",
-        description: "",
-        startDate: Date(),
-        endDate: Date()
+        description: ""
     )
 }
 
