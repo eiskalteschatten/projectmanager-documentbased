@@ -15,9 +15,15 @@ struct ProjectInfoView: View {
             TextField("Project Name", text: $document.project.projectInfo.name)
                 .frame(maxWidth: 400)
                 .padding(.bottom)
+                .notMacOS() {
+                    $0.textFieldStyle(RoundedBorderTextFieldStyle())
+                }
             
             TextField("Project Description", text: $document.project.projectInfo.description)
                 .frame(maxWidth: 400)
+                .notMacOS() {
+                    $0.textFieldStyle(RoundedBorderTextFieldStyle())
+                }
         }
         .frame(minWidth: 0, maxWidth: .infinity, minHeight: 0, maxHeight: .infinity)
     }
