@@ -27,8 +27,9 @@ struct ContentView: View {
                     }
                 )
             }
+            .listStyle(SidebarListStyle())
         }
-        .listStyle(SidebarListStyle())
+        .navigationViewStyle(DoubleColumnNavigationViewStyle())
     }
 }
 
