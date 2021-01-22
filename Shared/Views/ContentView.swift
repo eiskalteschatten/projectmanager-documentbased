@@ -13,7 +13,12 @@ enum ProjectScreen: Int {
 
 struct ContentView: View {
     @Binding var document: ProjectManagerDocument
-    @State private var screen: ProjectScreen? = .projectInfo
+    @State private var screen: ProjectScreen?
+    
+    init(document: Binding<ProjectManagerDocument>) {
+        self._document = document
+        self._screen = State(initialValue: ProjectScreen.init(rawValue: document.project.state.screen.wrappedValue))
+    }
 
     var body: some View {
         NavigationViewWrapper(document: $document, screen: $screen) {
@@ -84,6 +89,11 @@ fileprivate struct NavigationViewWrapper<Content>: View where Content: View {
                 }
             }
             .navigationTitle(document.project.projectInfo.name != "" ? document.project.projectInfo.name : self.defaultProjectName)
+            .onChange(of: self.screen, perform: { _ in
+                if self.screen?.rawValue != nil {
+                    document.project.state.screen = self.screen?.rawValue ?? ProjectScreen.projectInfo.rawValue
+                }
+            })
         }
         .navigationBarHidden(true)
         #endif
