@@ -11,7 +11,7 @@ struct ProjectInfoView: View {
     @Binding var document: ProjectManagerDocument
     
     var body: some View {
-        VStack(spacing: 15) {
+        VStack(alignment: .leading, spacing: 15) {
             TextField("Project Name", text: $document.project.projectInfo.name)
                 .notMacOS() {
                     $0.textFieldStyle(RoundedBorderTextFieldStyle())
@@ -23,44 +23,51 @@ struct ProjectInfoView: View {
                 }
             
             Divider()
-            
-            VStack(alignment: .leading) {
-                #if os(macOS)
-                Text("Start Date:")
-                #endif
-                
-                DatePicker(
-                    "Start Date:",
-                    selection: Binding<Date>(
-                        get: {document.project.projectInfo.startDate ?? Date()},
-                        set: {document.project.projectInfo.startDate = $0}
-                    ),
-                    displayedComponents: [.date]
-                )
-                .macOS() {
-                    $0.labelsHidden()
-                }
+                .padding(.vertical, 10)
+        
+            Toggle(isOn: $document.project.projectInfo.hasDates) {
+                Text("Use start and end dates")
             }
-            
-            VStack(alignment: .leading) {
-                #if os(macOS)
-                Text("End Date:")
-                #endif
+
+            if document.project.projectInfo.hasDates {
+                Group {
+                    #if os(macOS)
+                    Text("Start Date:")
+                    #endif
+                    
+                    DatePicker(
+                        "Start Date:",
+                        selection: Binding<Date>(
+                            get: {document.project.projectInfo.startDate ?? Date()},
+                            set: {document.project.projectInfo.startDate = $0}
+                        ),
+                        displayedComponents: [.date]
+                    )
+                    .macOS() {
+                        $0.labelsHidden()
+                    }
                 
-                DatePicker(
-                    "End Date:",
-                    selection: Binding<Date>(
-                        get: {document.project.projectInfo.endDate ?? Date()},
-                        set: {document.project.projectInfo.endDate = $0}
-                    ),
-                    displayedComponents: [.date]
-                )
-                .macOS() {
-                    $0.labelsHidden()
+                    #if os(macOS)
+                    Text("End Date:")
+                    #endif
+                    
+                    DatePicker(
+                        "End Date:",
+                        selection: Binding<Date>(
+                            get: {document.project.projectInfo.endDate ?? Date()},
+                            set: {document.project.projectInfo.endDate = $0}
+                        ),
+                        displayedComponents: [.date]
+                    )
+                    .macOS() {
+                        $0.labelsHidden()
+                    }
                 }
+                .opacity(document.project.projectInfo.hasDates ? 1 : 0)
+                .animation(.easeInOut)
             }
         }
-        .frame(minWidth: 0, maxWidth: 400, minHeight: 0, maxHeight: .infinity)
+        .frame(minWidth: 0, maxWidth: 400, minHeight: 0, maxHeight: .infinity).animation(.easeInOut)
     }
 }
 

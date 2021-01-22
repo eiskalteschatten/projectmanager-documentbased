@@ -21,6 +21,7 @@ func createMockProjectInfo() -> ProjectInfo {
     return ProjectInfo(
         name: "Test Project",
         description: "Test description",
+        hasDates: true,
         startDate: Date(),
         endDate: oneMonthFromNow
     )

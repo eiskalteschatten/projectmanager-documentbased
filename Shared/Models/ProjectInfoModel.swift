@@ -10,6 +10,7 @@ import Foundation
 struct ProjectInfo: Codable {
     var name: String
     var description: String
+    var hasDates: Bool
     var startDate: Date?
     var endDate: Date?
 }
