@@ -12,11 +12,17 @@ func createMockStateData() -> StateModel {
 }
 
 func createMockProjectInfo() -> ProjectInfo {
+    var oneMonthFromNow: Date {
+        var components = DateComponents()
+        components.month = 1
+        return Calendar.current.date(byAdding: components, to: Date())!
+    }
+    
     return ProjectInfo(
         name: "Test Project",
         description: "Test description",
         startDate: Date(),
-        endDate: Date()
+        endDate: oneMonthFromNow
     )
 }
 

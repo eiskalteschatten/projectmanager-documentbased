@@ -150,8 +150,8 @@
 				93381CD625A37EEA000B881F /* Models */,
 				93E135C225A32D67003F7423 /* Views */,
 				93833D3125A37384005FF3C0 /* Constants.swift */,
-				93E1358125A32D1C003F7423 /* Assets.xcassets */,
 				9392F40625BAC55A0049C937 /* GlobalExtensions.swift */,
+				93E1358125A32D1C003F7423 /* Assets.xcassets */,
 			);
 			path = Shared;
 			sourceTree = "<group>";
