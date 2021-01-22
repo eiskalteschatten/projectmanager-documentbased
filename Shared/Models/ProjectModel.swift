@@ -10,4 +10,5 @@ import Foundation
 struct Project: Codable {
     var state: StateModel
     var projectInfo: ProjectInfo
+    var tasks: [Task]?
 }

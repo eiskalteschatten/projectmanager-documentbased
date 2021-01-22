@@ -25,6 +25,8 @@
 		93C84B7125BB7297001D9889 /* TasksListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93C84B6F25BB7297001D9889 /* TasksListView.swift */; };
 		93C84B7725BB72A6001D9889 /* TasksKanbanView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93C84B7625BB72A6001D9889 /* TasksKanbanView.swift */; };
 		93C84B7825BB72A6001D9889 /* TasksKanbanView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93C84B7625BB72A6001D9889 /* TasksKanbanView.swift */; };
+		93C84B8225BB7399001D9889 /* TaskModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93C84B8125BB7399001D9889 /* TaskModel.swift */; };
+		93C84B8325BB7399001D9889 /* TaskModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93C84B8125BB7399001D9889 /* TaskModel.swift */; };
 		93D3829125BB39B700189D46 /* iOSImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93D3829025BB39B700189D46 /* iOSImagePicker.swift */; };
 		93D3829C25BB3EAB00189D46 /* TasksView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93D3829B25BB3EAB00189D46 /* TasksView.swift */; };
 		93D382A925BB3F2D00189D46 /* TasksView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93D3829B25BB3EAB00189D46 /* TasksView.swift */; };
@@ -69,6 +71,7 @@
 		9392F41825BAC62A0049C937 /* Mocks.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Mocks.swift; sourceTree = "<group>"; };
 		93C84B6F25BB7297001D9889 /* TasksListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TasksListView.swift; sourceTree = "<group>"; };
 		93C84B7625BB72A6001D9889 /* TasksKanbanView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TasksKanbanView.swift; sourceTree = "<group>"; };
+		93C84B8125BB7399001D9889 /* TaskModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskModel.swift; sourceTree = "<group>"; };
 		93D3829025BB39B700189D46 /* iOSImagePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = iOSImagePicker.swift; sourceTree = "<group>"; };
 		93D3829B25BB3EAB00189D46 /* TasksView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TasksView.swift; sourceTree = "<group>"; };
 		93D60F3625BA32D40040DE9F /* ProjectModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectModel.swift; sourceTree = "<group>"; };
@@ -129,6 +132,7 @@
 				93D60F3625BA32D40040DE9F /* ProjectModel.swift */,
 				9366CD0A25BAE04600B56A2D /* StateModel.swift */,
 				93502CCD25BAF47300CC7402 /* ProjectInfoModel.swift */,
+				93C84B8125BB7399001D9889 /* TaskModel.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -411,6 +415,7 @@
 				9392F40E25BAC5B90049C937 /* ProjectInfoView.swift in Sources */,
 				93D3829125BB39B700189D46 /* iOSImagePicker.swift in Sources */,
 				93E135AC25A32D1C003F7423 /* ContentView.swift in Sources */,
+				93C84B8225BB7399001D9889 /* TaskModel.swift in Sources */,
 				93833D3225A37384005FF3C0 /* Constants.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -431,6 +436,7 @@
 				93C84B7125BB7297001D9889 /* TasksListView.swift in Sources */,
 				93D60F3825BA32D40040DE9F /* ProjectModel.swift in Sources */,
 				9392F40F25BAC5B90049C937 /* ProjectInfoView.swift in Sources */,
+				93C84B8325BB7399001D9889 /* TaskModel.swift in Sources */,
 				93E135AD25A32D1C003F7423 /* ContentView.swift in Sources */,
 				93833D3325A37384005FF3C0 /* Constants.swift in Sources */,
 			);

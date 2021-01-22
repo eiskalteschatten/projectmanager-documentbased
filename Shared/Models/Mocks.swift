@@ -11,6 +11,41 @@ func createMockStateData() -> StateModel {
     return StateModel(screen: ProjectScreen.projectInfo.rawValue)
 }
 
+func createMockTasks() -> [Task] {
+    var yesterday: Date {
+        var components = DateComponents()
+        components.day = -1
+        return Calendar.current.date(byAdding: components, to: Date())!
+    }
+    
+    var oneDayFromNow: Date {
+        var components = DateComponents()
+        components.day = 1
+        return Calendar.current.date(byAdding: components, to: Date())!
+    }
+    
+    return [
+        Task(
+            name: "Task 1",
+            notes: "Task notes",
+            status: .todo,
+            dueDate: oneDayFromNow
+        ),
+        Task(
+            name: "Task 2",
+            notes: "More task notes",
+            status: .doing,
+            dueDate: Date()
+        ),
+        Task(
+            name: "Task 3",
+            notes: "More task notes",
+            status: .done,
+            dueDate: yesterday
+        )
+    ]
+}
+
 func createMockProjectInfo() -> ProjectInfo {
     var oneMonthFromNow: Date {
         var components = DateComponents()
@@ -30,7 +65,8 @@ func createMockProjectInfo() -> ProjectInfo {
 func createMockProject() -> Project {
     return Project(
         state: createMockStateData(),
-        projectInfo: createMockProjectInfo()
+        projectInfo: createMockProjectInfo(),
+        tasks: createMockTasks()
     )
 }
 
