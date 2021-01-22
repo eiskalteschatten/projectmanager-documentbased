@@ -8,6 +8,5 @@
 import Foundation
 
 struct Project: Codable {
-    var name: String
-    var description: String
+    var projectInfo: ProjectInfo
 }

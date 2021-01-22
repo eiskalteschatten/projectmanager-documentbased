@@ -16,7 +16,7 @@ struct ContentView: View {
     @State private var navSelection: ProjectScreen? = .projectInfo
 
     var body: some View {
-        NavigationViewWrapper(projectName: document.project.name) {
+        NavigationViewWrapper(projectName: document.project.projectInfo.name) {
             NavigationLink(
                 destination: ProjectInfoView(document: $document),
                 tag: ProjectScreen.projectInfo,

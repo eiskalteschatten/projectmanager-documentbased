@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		93502CCE25BAF47300CC7402 /* ProjectInfoModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93502CCD25BAF47300CC7402 /* ProjectInfoModel.swift */; };
+		93502CCF25BAF47300CC7402 /* ProjectInfoModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93502CCD25BAF47300CC7402 /* ProjectInfoModel.swift */; };
+		93502CD525BAF56200CC7402 /* DefaultProjectData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93502CD425BAF56200CC7402 /* DefaultProjectData.swift */; };
+		93502CD625BAF56200CC7402 /* DefaultProjectData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93502CD425BAF56200CC7402 /* DefaultProjectData.swift */; };
 		93833D3225A37384005FF3C0 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93833D3125A37384005FF3C0 /* Constants.swift */; };
 		93833D3325A37384005FF3C0 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93833D3125A37384005FF3C0 /* Constants.swift */; };
 		9392F40725BAC55A0049C937 /* GlobalExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9392F40625BAC55A0049C937 /* GlobalExtensions.swift */; };
@@ -47,6 +51,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		93502CCD25BAF47300CC7402 /* ProjectInfoModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectInfoModel.swift; sourceTree = "<group>"; };
+		93502CD425BAF56200CC7402 /* DefaultProjectData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultProjectData.swift; sourceTree = "<group>"; };
 		93833D3125A37384005FF3C0 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		9392F40625BAC55A0049C937 /* GlobalExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GlobalExtensions.swift; sourceTree = "<group>"; };
 		9392F40D25BAC5B90049C937 /* ProjectInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectInfoView.swift; sourceTree = "<group>"; };
@@ -104,7 +110,10 @@
 		93381CD625A37EEA000B881F /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				9392F41825BAC62A0049C937 /* Mocks.swift */,
+				93502CD425BAF56200CC7402 /* DefaultProjectData.swift */,
 				93D60F3625BA32D40040DE9F /* ProjectModel.swift */,
+				93502CCD25BAF47300CC7402 /* ProjectInfoModel.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -139,7 +148,6 @@
 				93833D3125A37384005FF3C0 /* Constants.swift */,
 				93E1358125A32D1C003F7423 /* Assets.xcassets */,
 				9392F40625BAC55A0049C937 /* GlobalExtensions.swift */,
-				9392F41825BAC62A0049C937 /* Mocks.swift */,
 			);
 			path = Shared;
 			sourceTree = "<group>";
@@ -362,9 +370,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				93502CCE25BAF47300CC7402 /* ProjectInfoModel.swift in Sources */,
 				9392F40725BAC55A0049C937 /* GlobalExtensions.swift in Sources */,
 				93E135AA25A32D1C003F7423 /* ProjectManagerDocument.swift in Sources */,
 				93E135A825A32D1C003F7423 /* ProjectManagerApp.swift in Sources */,
+				93502CD525BAF56200CC7402 /* DefaultProjectData.swift in Sources */,
 				9392F41925BAC62A0049C937 /* Mocks.swift in Sources */,
 				93D60F3725BA32D40040DE9F /* ProjectModel.swift in Sources */,
 				9392F40E25BAC5B90049C937 /* ProjectInfoView.swift in Sources */,
@@ -377,9 +387,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				93502CCF25BAF47300CC7402 /* ProjectInfoModel.swift in Sources */,
 				9392F40825BAC55A0049C937 /* GlobalExtensions.swift in Sources */,
 				93E135AB25A32D1C003F7423 /* ProjectManagerDocument.swift in Sources */,
 				93E135A925A32D1C003F7423 /* ProjectManagerApp.swift in Sources */,
+				93502CD625BAF56200CC7402 /* DefaultProjectData.swift in Sources */,
 				9392F41A25BAC62A0049C937 /* Mocks.swift in Sources */,
 				93D60F3825BA32D40040DE9F /* ProjectModel.swift in Sources */,
 				9392F40F25BAC5B90049C937 /* ProjectInfoView.swift in Sources */,

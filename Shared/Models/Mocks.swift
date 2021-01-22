@@ -7,8 +7,12 @@
 
 import Foundation
 
+func createMockProjectInfo() -> ProjectInfo {
+    return ProjectInfo(name: "Test Project", description: "Test description")
+}
+
 func createMockProjectDocument() -> ProjectManagerDocument {
     return ProjectManagerDocument(
-        name: "Test Project", description: "Test description"
+        projectInfo: createMockProjectInfo()
     )
 }
