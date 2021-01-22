@@ -21,6 +21,10 @@
 		9392F40F25BAC5B90049C937 /* ProjectInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9392F40D25BAC5B90049C937 /* ProjectInfoView.swift */; };
 		9392F41925BAC62A0049C937 /* Mocks.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9392F41825BAC62A0049C937 /* Mocks.swift */; };
 		9392F41A25BAC62A0049C937 /* Mocks.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9392F41825BAC62A0049C937 /* Mocks.swift */; };
+		93C84B7025BB7297001D9889 /* TasksListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93C84B6F25BB7297001D9889 /* TasksListView.swift */; };
+		93C84B7125BB7297001D9889 /* TasksListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93C84B6F25BB7297001D9889 /* TasksListView.swift */; };
+		93C84B7725BB72A6001D9889 /* TasksKanbanView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93C84B7625BB72A6001D9889 /* TasksKanbanView.swift */; };
+		93C84B7825BB72A6001D9889 /* TasksKanbanView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93C84B7625BB72A6001D9889 /* TasksKanbanView.swift */; };
 		93D3829125BB39B700189D46 /* iOSImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93D3829025BB39B700189D46 /* iOSImagePicker.swift */; };
 		93D3829C25BB3EAB00189D46 /* TasksView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93D3829B25BB3EAB00189D46 /* TasksView.swift */; };
 		93D382A925BB3F2D00189D46 /* TasksView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93D3829B25BB3EAB00189D46 /* TasksView.swift */; };
@@ -63,6 +67,8 @@
 		9392F40625BAC55A0049C937 /* GlobalExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GlobalExtensions.swift; sourceTree = "<group>"; };
 		9392F40D25BAC5B90049C937 /* ProjectInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectInfoView.swift; sourceTree = "<group>"; };
 		9392F41825BAC62A0049C937 /* Mocks.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Mocks.swift; sourceTree = "<group>"; };
+		93C84B6F25BB7297001D9889 /* TasksListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TasksListView.swift; sourceTree = "<group>"; };
+		93C84B7625BB72A6001D9889 /* TasksKanbanView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TasksKanbanView.swift; sourceTree = "<group>"; };
 		93D3829025BB39B700189D46 /* iOSImagePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = iOSImagePicker.swift; sourceTree = "<group>"; };
 		93D3829B25BB3EAB00189D46 /* TasksView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TasksView.swift; sourceTree = "<group>"; };
 		93D60F3625BA32D40040DE9F /* ProjectModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectModel.swift; sourceTree = "<group>"; };
@@ -138,6 +144,8 @@
 			isa = PBXGroup;
 			children = (
 				93D3829B25BB3EAB00189D46 /* TasksView.swift */,
+				93C84B6F25BB7297001D9889 /* TasksListView.swift */,
+				93C84B7625BB72A6001D9889 /* TasksKanbanView.swift */,
 			);
 			path = Tasks;
 			sourceTree = "<group>";
@@ -392,10 +400,12 @@
 				93502CCE25BAF47300CC7402 /* ProjectInfoModel.swift in Sources */,
 				93D3829C25BB3EAB00189D46 /* TasksView.swift in Sources */,
 				9392F40725BAC55A0049C937 /* GlobalExtensions.swift in Sources */,
+				93C84B7725BB72A6001D9889 /* TasksKanbanView.swift in Sources */,
 				93E135AA25A32D1C003F7423 /* ProjectManagerDocument.swift in Sources */,
 				93E135A825A32D1C003F7423 /* ProjectManagerApp.swift in Sources */,
 				93502CD525BAF56200CC7402 /* DefaultProjectData.swift in Sources */,
 				9392F41925BAC62A0049C937 /* Mocks.swift in Sources */,
+				93C84B7025BB7297001D9889 /* TasksListView.swift in Sources */,
 				9366CD0B25BAE04600B56A2D /* StateModel.swift in Sources */,
 				93D60F3725BA32D40040DE9F /* ProjectModel.swift in Sources */,
 				9392F40E25BAC5B90049C937 /* ProjectInfoView.swift in Sources */,
@@ -415,8 +425,10 @@
 				93E135A925A32D1C003F7423 /* ProjectManagerApp.swift in Sources */,
 				93502CD625BAF56200CC7402 /* DefaultProjectData.swift in Sources */,
 				9392F41A25BAC62A0049C937 /* Mocks.swift in Sources */,
+				93C84B7825BB72A6001D9889 /* TasksKanbanView.swift in Sources */,
 				9366CD0C25BAE04600B56A2D /* StateModel.swift in Sources */,
 				93D382A925BB3F2D00189D46 /* TasksView.swift in Sources */,
+				93C84B7125BB7297001D9889 /* TasksListView.swift in Sources */,
 				93D60F3825BA32D40040DE9F /* ProjectModel.swift in Sources */,
 				9392F40F25BAC5B90049C937 /* ProjectInfoView.swift in Sources */,
 				93E135AD25A32D1C003F7423 /* ContentView.swift in Sources */,

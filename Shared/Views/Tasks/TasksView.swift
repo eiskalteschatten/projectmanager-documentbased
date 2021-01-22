@@ -11,7 +11,19 @@ struct TasksView: View {
     @Binding var document: ProjectManagerDocument
     
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        TabView {
+            TasksListView(document: $document)
+                .tabItem {
+                    Image(systemName: "list.bullet")
+                    Text("List")
+                }
+
+            TasksKanbanView(document: $document)
+                .tabItem {
+                    Image(systemName: "rectangle.split.3x1")
+                    Text("Kanban")
+                }
+        }
     }
 }
 
