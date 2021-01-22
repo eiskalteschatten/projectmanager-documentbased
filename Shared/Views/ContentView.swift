@@ -16,7 +16,7 @@ struct ContentView: View {
     @State private var navSelection: ProjectScreen?
 
     var body: some View {
-        NavigationViewWrapper {
+        NavigationViewWrapper(projectName: document.project.name) {
             NavigationLink(
                 destination: ProjectInfoView(document: $document),
                 tag: ProjectScreen.projectInfo,
@@ -32,9 +32,11 @@ struct ContentView: View {
 
 fileprivate struct NavigationViewWrapper<Content>: View where Content: View {
     let content: () -> Content
+    var projectName: String = "ProjectManager"
 
-    init(@ViewBuilder content: @escaping () -> Content) {
+    init(projectName: String, @ViewBuilder content: @escaping () -> Content) {
         self.content = content
+        self.projectName = projectName != "" ? projectName : self.projectName
     }
 
     var body: some View {
@@ -63,6 +65,7 @@ fileprivate struct NavigationViewWrapper<Content>: View where Content: View {
                     }
                 }
             }
+            .navigationTitle(self.projectName)
         }
         .navigationBarHidden(true)
         #endif
