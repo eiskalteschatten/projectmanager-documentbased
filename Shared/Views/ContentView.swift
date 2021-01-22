@@ -13,7 +13,7 @@ fileprivate enum ProjectScreen: Int {
 
 struct ContentView: View {
     @Binding var document: ProjectManagerDocument
-    @State private var navSelection: ProjectScreen?
+    @State private var navSelection: ProjectScreen? = .projectInfo
 
     var body: some View {
         NavigationViewWrapper(projectName: document.project.name) {
