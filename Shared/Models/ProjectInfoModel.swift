@@ -8,6 +8,7 @@
 import Foundation
 
 struct ProjectInfo: Codable {
+    var image: Data?
     var name: String
     var description: String
     var hasDates: Bool
