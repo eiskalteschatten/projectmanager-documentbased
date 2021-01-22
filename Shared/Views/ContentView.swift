@@ -16,20 +16,56 @@ struct ContentView: View {
     @State private var navSelection: ProjectScreen?
 
     var body: some View {
+        NavigationViewWrapper {
+            NavigationLink(
+                destination: ProjectInfoView(document: $document),
+                tag: ProjectScreen.projectInfo,
+                selection: $navSelection,
+                label: {
+                    Label("Project Info", systemImage: "info.circle")
+                }
+            )
+        }
+        .navigationViewStyle(DoubleColumnNavigationViewStyle())
+    }
+}
+
+fileprivate struct NavigationViewWrapper<Content>: View where Content: View {
+    let content: () -> Content
+
+    init(@ViewBuilder content: @escaping () -> Content) {
+        self.content = content
+    }
+
+    var body: some View {
+        #if os(macOS)
         NavigationView {
             List {
-                NavigationLink(
-                    destination: ProjectInfoView(document: $document),
-                    tag: ProjectScreen.projectInfo,
-                    selection: $navSelection,
-                    label: {
-                        Label("Project Info", systemImage: "info.circle")
-                    }
-                )
+                content()
             }
             .listStyle(SidebarListStyle())
         }
-        .navigationViewStyle(DoubleColumnNavigationViewStyle())
+        #else
+        NavigationView {
+            List {
+                content()
+            }
+            .listStyle(SidebarListStyle())
+            .toolbar() {
+                ToolbarItem(placement: .navigationBarLeading) {
+                    Button(action: {
+                        for window in UIApplication.shared.windows where window.isKeyWindow {
+                            window.rootViewController?.dismiss(animated: true, completion: nil)
+                            break
+                        }
+                    }) {
+                        Label("Back", systemImage: "chevron.left")
+                    }
+                }
+            }
+        }
+        .navigationBarHidden(true)
+        #endif
     }
 }
 
