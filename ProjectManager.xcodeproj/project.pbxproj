@@ -9,6 +9,12 @@
 /* Begin PBXBuildFile section */
 		93833D3225A37384005FF3C0 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93833D3125A37384005FF3C0 /* Constants.swift */; };
 		93833D3325A37384005FF3C0 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93833D3125A37384005FF3C0 /* Constants.swift */; };
+		9392F40725BAC55A0049C937 /* GlobalExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9392F40625BAC55A0049C937 /* GlobalExtensions.swift */; };
+		9392F40825BAC55A0049C937 /* GlobalExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9392F40625BAC55A0049C937 /* GlobalExtensions.swift */; };
+		9392F40E25BAC5B90049C937 /* ProjectInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9392F40D25BAC5B90049C937 /* ProjectInfoView.swift */; };
+		9392F40F25BAC5B90049C937 /* ProjectInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9392F40D25BAC5B90049C937 /* ProjectInfoView.swift */; };
+		9392F41925BAC62A0049C937 /* Mocks.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9392F41825BAC62A0049C937 /* Mocks.swift */; };
+		9392F41A25BAC62A0049C937 /* Mocks.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9392F41825BAC62A0049C937 /* Mocks.swift */; };
 		93D60F3725BA32D40040DE9F /* ProjectModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93D60F3625BA32D40040DE9F /* ProjectModel.swift */; };
 		93D60F3825BA32D40040DE9F /* ProjectModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93D60F3625BA32D40040DE9F /* ProjectModel.swift */; };
 		93E1359B25A32D1C003F7423 /* Tests_iOS.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93E1359A25A32D1C003F7423 /* Tests_iOS.swift */; };
@@ -42,6 +48,9 @@
 
 /* Begin PBXFileReference section */
 		93833D3125A37384005FF3C0 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		9392F40625BAC55A0049C937 /* GlobalExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GlobalExtensions.swift; sourceTree = "<group>"; };
+		9392F40D25BAC5B90049C937 /* ProjectInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectInfoView.swift; sourceTree = "<group>"; };
+		9392F41825BAC62A0049C937 /* Mocks.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Mocks.swift; sourceTree = "<group>"; };
 		93D60F3625BA32D40040DE9F /* ProjectModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectModel.swift; sourceTree = "<group>"; };
 		93E1357E25A32D1C003F7423 /* ProjectManagerApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectManagerApp.swift; sourceTree = "<group>"; };
 		93E1357F25A32D1C003F7423 /* ProjectManagerDocument.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectManagerDocument.swift; sourceTree = "<group>"; };
@@ -123,12 +132,14 @@
 		93E1357D25A32D1C003F7423 /* Shared */ = {
 			isa = PBXGroup;
 			children = (
-				93381CD625A37EEA000B881F /* Models */,
-				93E135C225A32D67003F7423 /* Views */,
 				93E1357E25A32D1C003F7423 /* ProjectManagerApp.swift */,
 				93E1357F25A32D1C003F7423 /* ProjectManagerDocument.swift */,
+				93381CD625A37EEA000B881F /* Models */,
+				93E135C225A32D67003F7423 /* Views */,
 				93833D3125A37384005FF3C0 /* Constants.swift */,
 				93E1358125A32D1C003F7423 /* Assets.xcassets */,
+				9392F40625BAC55A0049C937 /* GlobalExtensions.swift */,
+				9392F41825BAC62A0049C937 /* Mocks.swift */,
 			);
 			path = Shared;
 			sourceTree = "<group>";
@@ -183,6 +194,7 @@
 			isa = PBXGroup;
 			children = (
 				93E1358025A32D1C003F7423 /* ContentView.swift */,
+				9392F40D25BAC5B90049C937 /* ProjectInfoView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -350,9 +362,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9392F40725BAC55A0049C937 /* GlobalExtensions.swift in Sources */,
 				93E135AA25A32D1C003F7423 /* ProjectManagerDocument.swift in Sources */,
 				93E135A825A32D1C003F7423 /* ProjectManagerApp.swift in Sources */,
+				9392F41925BAC62A0049C937 /* Mocks.swift in Sources */,
 				93D60F3725BA32D40040DE9F /* ProjectModel.swift in Sources */,
+				9392F40E25BAC5B90049C937 /* ProjectInfoView.swift in Sources */,
 				93E135AC25A32D1C003F7423 /* ContentView.swift in Sources */,
 				93833D3225A37384005FF3C0 /* Constants.swift in Sources */,
 			);
@@ -362,9 +377,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9392F40825BAC55A0049C937 /* GlobalExtensions.swift in Sources */,
 				93E135AB25A32D1C003F7423 /* ProjectManagerDocument.swift in Sources */,
 				93E135A925A32D1C003F7423 /* ProjectManagerApp.swift in Sources */,
+				9392F41A25BAC62A0049C937 /* Mocks.swift in Sources */,
 				93D60F3825BA32D40040DE9F /* ProjectModel.swift in Sources */,
+				9392F40F25BAC5B90049C937 /* ProjectInfoView.swift in Sources */,
 				93E135AD25A32D1C003F7423 /* ContentView.swift in Sources */,
 				93833D3325A37384005FF3C0 /* Constants.swift in Sources */,
 			);
