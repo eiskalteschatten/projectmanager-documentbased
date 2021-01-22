@@ -12,7 +12,12 @@ func createMockStateData() -> StateModel {
 }
 
 func createMockProjectInfo() -> ProjectInfo {
-    return ProjectInfo(name: "Test Project", description: "Test description")
+    return ProjectInfo(
+        name: "Test Project",
+        description: "Test description",
+        startDate: Date(),
+        endDate: Date()
+    )
 }
 
 func createMockProject() -> Project {
