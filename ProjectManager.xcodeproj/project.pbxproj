@@ -22,6 +22,8 @@
 		9392F41925BAC62A0049C937 /* Mocks.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9392F41825BAC62A0049C937 /* Mocks.swift */; };
 		9392F41A25BAC62A0049C937 /* Mocks.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9392F41825BAC62A0049C937 /* Mocks.swift */; };
 		93D3829125BB39B700189D46 /* iOSImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93D3829025BB39B700189D46 /* iOSImagePicker.swift */; };
+		93D3829C25BB3EAB00189D46 /* TasksView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93D3829B25BB3EAB00189D46 /* TasksView.swift */; };
+		93D382A925BB3F2D00189D46 /* TasksView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93D3829B25BB3EAB00189D46 /* TasksView.swift */; };
 		93D60F3725BA32D40040DE9F /* ProjectModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93D60F3625BA32D40040DE9F /* ProjectModel.swift */; };
 		93D60F3825BA32D40040DE9F /* ProjectModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93D60F3625BA32D40040DE9F /* ProjectModel.swift */; };
 		93E1359B25A32D1C003F7423 /* Tests_iOS.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93E1359A25A32D1C003F7423 /* Tests_iOS.swift */; };
@@ -62,6 +64,7 @@
 		9392F40D25BAC5B90049C937 /* ProjectInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectInfoView.swift; sourceTree = "<group>"; };
 		9392F41825BAC62A0049C937 /* Mocks.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Mocks.swift; sourceTree = "<group>"; };
 		93D3829025BB39B700189D46 /* iOSImagePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = iOSImagePicker.swift; sourceTree = "<group>"; };
+		93D3829B25BB3EAB00189D46 /* TasksView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TasksView.swift; sourceTree = "<group>"; };
 		93D60F3625BA32D40040DE9F /* ProjectModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectModel.swift; sourceTree = "<group>"; };
 		93E1357E25A32D1C003F7423 /* ProjectManagerApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectManagerApp.swift; sourceTree = "<group>"; };
 		93E1357F25A32D1C003F7423 /* ProjectManagerDocument.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectManagerDocument.swift; sourceTree = "<group>"; };
@@ -129,6 +132,14 @@
 			children = (
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		93D3829A25BB3E9F00189D46 /* Tasks */ = {
+			isa = PBXGroup;
+			children = (
+				93D3829B25BB3EAB00189D46 /* TasksView.swift */,
+			);
+			path = Tasks;
 			sourceTree = "<group>";
 		};
 		93E1357825A32D1B003F7423 = {
@@ -208,6 +219,7 @@
 			isa = PBXGroup;
 			children = (
 				93E1358025A32D1C003F7423 /* ContentView.swift */,
+				93D3829A25BB3E9F00189D46 /* Tasks */,
 				9392F40D25BAC5B90049C937 /* ProjectInfoView.swift */,
 				93D3829025BB39B700189D46 /* iOSImagePicker.swift */,
 			);
@@ -378,6 +390,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				93502CCE25BAF47300CC7402 /* ProjectInfoModel.swift in Sources */,
+				93D3829C25BB3EAB00189D46 /* TasksView.swift in Sources */,
 				9392F40725BAC55A0049C937 /* GlobalExtensions.swift in Sources */,
 				93E135AA25A32D1C003F7423 /* ProjectManagerDocument.swift in Sources */,
 				93E135A825A32D1C003F7423 /* ProjectManagerApp.swift in Sources */,
@@ -403,6 +416,7 @@
 				93502CD625BAF56200CC7402 /* DefaultProjectData.swift in Sources */,
 				9392F41A25BAC62A0049C937 /* Mocks.swift in Sources */,
 				9366CD0C25BAE04600B56A2D /* StateModel.swift in Sources */,
+				93D382A925BB3F2D00189D46 /* TasksView.swift in Sources */,
 				93D60F3825BA32D40040DE9F /* ProjectModel.swift in Sources */,
 				9392F40F25BAC5B90049C937 /* ProjectInfoView.swift in Sources */,
 				93E135AD25A32D1C003F7423 /* ContentView.swift in Sources */,
