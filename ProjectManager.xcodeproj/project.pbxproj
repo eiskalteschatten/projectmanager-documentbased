@@ -144,6 +144,14 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		93C84B9425BB8B9E001D9889 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				93D3829025BB39B700189D46 /* iOSImagePicker.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
 		93D3829A25BB3E9F00189D46 /* Tasks */ = {
 			isa = PBXGroup;
 			children = (
@@ -195,6 +203,7 @@
 		93E1358825A32D1C003F7423 /* iOS */ = {
 			isa = PBXGroup;
 			children = (
+				93C84B9425BB8B9E001D9889 /* Views */,
 				93E1358925A32D1C003F7423 /* Info.plist */,
 			);
 			path = iOS;
@@ -233,7 +242,6 @@
 				93E1358025A32D1C003F7423 /* ContentView.swift */,
 				93D3829A25BB3E9F00189D46 /* Tasks */,
 				9392F40D25BAC5B90049C937 /* ProjectInfoView.swift */,
-				93D3829025BB39B700189D46 /* iOSImagePicker.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";

@@ -24,6 +24,7 @@ struct TasksView: View {
                     Text("Kanban")
                 }
         }
+        .navigationTitle("Tasks")
     }
 }
 

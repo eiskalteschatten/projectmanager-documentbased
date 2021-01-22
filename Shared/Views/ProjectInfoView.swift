@@ -128,7 +128,8 @@ struct ProjectInfoView: View {
                 }
                 .frame(minWidth: 0, maxWidth: 400, minHeight: 0, maxHeight: .infinity)
                 .padding(.bottom)
-            }.frame(minWidth: 200, maxWidth: .infinity)
+            }
+            .frame(minWidth: 200, maxWidth: .infinity)
         }
         .notMacOS() {
             $0.sheet(isPresented: $showImagePicker) {

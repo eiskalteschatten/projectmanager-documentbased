@@ -22,6 +22,7 @@ func getDefaultProjectInfoData() -> ProjectInfo {
 func getDefaultProjectData() -> Project {
     return Project(
         state: getDefaultStateData(),
-        projectInfo: getDefaultProjectInfoData()
+        projectInfo: getDefaultProjectInfoData(),
+        tasks: []
     )
 }

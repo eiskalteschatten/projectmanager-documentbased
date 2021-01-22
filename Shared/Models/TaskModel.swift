@@ -7,13 +7,14 @@
 
 import Foundation
 
-struct Task: Codable {
+struct Task: Codable, Identifiable {
     enum TaskStatus: Int, Codable {
         case todo, doing, done
     }
     
-    var name: String?
-    var notes: String?
+    var id = UUID()
+    var name: String = ""
+    var notes: String = ""
     var status: TaskStatus = .todo
     var dueDate: Date?
 }
