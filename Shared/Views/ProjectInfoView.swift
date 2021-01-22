@@ -16,14 +16,23 @@ struct ProjectInfoView: View {
                 if document.project.projectInfo.image == nil {
                     Image(systemName: "doc.circle")
                         .font(.system(size: 200))
-                        .frame(width: 200.0, height: 225, alignment: .center)
+                        .frame(width: 200.0, height: 225.0, alignment: .center)
+                        .padding(.top)
                 }
                 else {
-                    Image(systemName: "doc.circle")
-        //                .resizeable()
-        //                .aspectRatio(contentMode: .fill)
-                        .frame(width: 225, height: 225.0, alignment: .center)
+                    #if os(macOS)
+                    let image = NSImage(data: document.project.projectInfo.image ?? Data())
+                    Image(nsImage: image!)
+                        .frame(width: 225.0, height: 225.0, alignment: .center)
                         .clipShape(Circle())
+                        .padding(.vertical)
+                    #else
+                    let image = UIImage(data: document.project.projectInfo.image ?? Data())
+                    Image(uiImage: image!)
+                        .frame(width: 225.0, height: 225.0, alignment: .center)
+                        .clipShape(Circle())
+                        .padding(.vertical)
+                    #endif
                 }
                 
                 #if os(macOS)
@@ -35,11 +44,16 @@ struct ProjectInfoView: View {
                     openPanel.canCreateDirectories = false
                     openPanel.canChooseFiles = true
                     openPanel.worksWhenModal = true
-                    openPanel.allowedFileTypes = ["png", "jpg", "jpeg"]
+                    openPanel.allowedFileTypes = ["png", "jpg", "jpeg", "gif"]
                     openPanel.begin { (result) -> Void in
-                        if result.rawValue == NSApplication.ModalResponse.OK.rawValue {
-                            let selectedPath = openPanel.url!.path
-                            print(selectedPath)
+                        do {
+                            if result.rawValue == NSApplication.ModalResponse.OK.rawValue {
+                                let url = openPanel.url!
+                                document.project.projectInfo.image = try Data(contentsOf: url)
+                            }
+                        }
+                        catch {
+                            print("The selected image could not be loaded: \(openPanel.url!.path)")
                         }
                     }
                 }
