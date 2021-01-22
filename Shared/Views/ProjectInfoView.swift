@@ -16,15 +16,35 @@ struct ProjectInfoView: View {
                 if document.project.projectInfo.image == nil {
                     Image(systemName: "doc.circle")
                         .font(.system(size: 200))
-                        .frame(width: 250.0, height: 250.0, alignment: .center)
+                        .frame(width: 200.0, height: 225, alignment: .center)
                 }
                 else {
                     Image(systemName: "doc.circle")
         //                .resizeable()
         //                .aspectRatio(contentMode: .fill)
-                        .frame(width: 250.0, height: 250.0, alignment: .center)
+                        .frame(width: 225, height: 225.0, alignment: .center)
                         .clipShape(Circle())
                 }
+                
+                #if os(macOS)
+                Button("Select Project Image") {
+                    let openPanel = NSOpenPanel()
+                    openPanel.prompt = "Select Project Image"
+                    openPanel.allowsMultipleSelection = false
+                    openPanel.canChooseDirectories = false
+                    openPanel.canCreateDirectories = false
+                    openPanel.canChooseFiles = true
+                    openPanel.worksWhenModal = true
+                    openPanel.allowedFileTypes = ["png", "jpg", "jpeg"]
+                    openPanel.begin { (result) -> Void in
+                        if result.rawValue == NSApplication.ModalResponse.OK.rawValue {
+                            let selectedPath = openPanel.url!.path
+                            print(selectedPath)
+                        }
+                    }
+                }
+                .padding(.bottom)
+                #endif
             
                 VStack(alignment: .leading, spacing: 15) {
                     TextField("Project Name", text: $document.project.projectInfo.name)
