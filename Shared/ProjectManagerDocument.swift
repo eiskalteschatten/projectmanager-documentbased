@@ -17,8 +17,8 @@ extension UTType {
 struct ProjectManagerDocument: FileDocument {
     var project: Project
 
-    init(projectInfo: ProjectInfo = getDefaultProjectInfoData()) {
-        self.project = Project(projectInfo: projectInfo)
+    init(project: Project = getDefaultProjectData()) {
+        self.project = project
     }
 
     static var readableContentTypes: [UTType] { [.projectData] }

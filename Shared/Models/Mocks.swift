@@ -11,8 +11,12 @@ func createMockProjectInfo() -> ProjectInfo {
     return ProjectInfo(name: "Test Project", description: "Test description")
 }
 
+func createMockProject() -> Project {
+    return Project(projectInfo: createMockProjectInfo())
+}
+
 func createMockProjectDocument() -> ProjectManagerDocument {
     return ProjectManagerDocument(
-        projectInfo: createMockProjectInfo()
+        project: createMockProject()
     )
 }
