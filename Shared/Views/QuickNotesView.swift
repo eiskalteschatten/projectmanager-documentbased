@@ -10,13 +10,13 @@ import SwiftUI
 struct QuickNotesView: View {
     @Binding var document: ProjectManagerDocument
     
-    private let rows = [
-        GridItem(.flexible())
+    private let columns = [
+        GridItem(.adaptive(minimum: 200), alignment: .leading)
     ]
     
     var body: some View {
         ScrollView {
-            LazyHGrid(rows: rows, spacing: 10) {
+            LazyVGrid(columns: columns, alignment: .leading, spacing: 10) {
                 ForEach(document.project.quickNotes?.indices ?? 0..<0, id: \.self) { index in
                     let quickNote = Binding<QuickNote>(
                         get: { self.document.project.quickNotes![index] },
@@ -39,7 +39,7 @@ struct QuickNotesView: View {
                     }
                 }
             }
-            .frame(minWidth: 0, maxWidth: .infinity, minHeight: 0, maxHeight: .infinity, alignment: .topLeading)
+            .frame(minWidth: 200, maxWidth: .infinity, minHeight: 0, maxHeight: .infinity, alignment: .topLeading)
         }
         .padding()
         .toolbar() {
