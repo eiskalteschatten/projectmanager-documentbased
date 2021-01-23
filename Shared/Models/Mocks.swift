@@ -65,6 +65,21 @@ func createMockBookmarks() -> [Bookmark] {
     ]
 }
 
+func createMockQuickNotes() -> [QuickNote] {
+    return [
+        QuickNote(
+            name: "My Note",
+            content: "I have a lot notes",
+            pinned: true
+        ),
+        QuickNote(
+            name: "This note is pinned",
+            content: "Or maybe not many notes at all",
+            pinned: false
+        )
+    ]
+}
+
 func createMockProjectInfo() -> ProjectInfo {
     var oneMonthFromNow: Date {
         var components = DateComponents()
@@ -87,7 +102,8 @@ func createMockProject() -> Project {
         settings: createMockSettingsData(),
         projectInfo: createMockProjectInfo(),
         tasks: createMockTasks(),
-        bookmarks: createMockBookmarks()
+        bookmarks: createMockBookmarks(),
+        quickNotes: createMockQuickNotes()
     )
 }
 

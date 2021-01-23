@@ -13,4 +13,5 @@ struct Project: Codable {
     var projectInfo: ProjectInfo
     var tasks: [Task] = []
     var bookmarks: [Bookmark]? = []
+    var quickNotes: [QuickNote]? = []
 }

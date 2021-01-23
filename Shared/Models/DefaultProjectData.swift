@@ -29,6 +29,7 @@ func getDefaultProjectData() -> Project {
         settings: getDefaultSettingsData(),
         projectInfo: getDefaultProjectInfoData(),
         tasks: [],
-        bookmarks: []
+        bookmarks: [],
+        quickNotes: []
     )
 }
