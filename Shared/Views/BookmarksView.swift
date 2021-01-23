@@ -13,7 +13,7 @@ struct BookmarksView: View {
     
     var body: some View {
         List(selection: $selection) {
-            ForEach(document.project.bookmarks?.indices ?? 0..<0, id: \.self) { index in
+            ForEach(document.project.bookmarks.indices, id: \.self) { index in
                 BookmarksListItemView(
                     document: $document,
                     index: index
@@ -41,19 +41,15 @@ struct BookmarksView: View {
     
     private func addBookmark() {
         withAnimation {
-            if self.document.project.bookmarks == nil {
-                self.document.project.bookmarks = []
-            }
-            
             let newBookmark = Bookmark()
-            self.document.project.bookmarks?.append(newBookmark)
+            self.document.project.bookmarks.append(newBookmark)
         }
     }
     
     private func deleteBookmark(offsets: IndexSet) {
         withAnimation {
             for offset in offsets {
-                self.document.project.bookmarks?.remove(at: offset)
+                self.document.project.bookmarks.remove(at: offset)
             }
         }
     }
@@ -65,11 +61,11 @@ fileprivate struct BookmarksListItemView: View {
 
     var body: some View {
         HStack(spacing: 10) {
-//            TextField("Name", text: $document.project.bookmarks[index].name)
-//                .textFieldStyle(PlainTextFieldStyle())
-//
-//            TextField("URL", text: $document.project.bookmarks[index].url)
-//                .textFieldStyle(PlainTextFieldStyle())
+            TextField("Name", text: $document.project.bookmarks[index].name)
+                .textFieldStyle(PlainTextFieldStyle())
+
+            TextField("URL", text: $document.project.bookmarks[index].url)
+                .textFieldStyle(PlainTextFieldStyle())
         }
         .padding(.vertical, 5)
     }
