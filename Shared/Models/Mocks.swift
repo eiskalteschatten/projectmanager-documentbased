@@ -29,19 +29,21 @@ func createMockTasks() -> [Task] {
             name: "Task 1",
             notes: "Task notes",
             status: .todo,
+            hasDueDate: true,
             dueDate: oneDayFromNow
         ),
         Task(
             name: "Task 2",
             notes: "More task notes",
-            status: .doing,
-            dueDate: Date()
+            status: .done,
+            hasDueDate: true,
+            dueDate: yesterday
         ),
         Task(
             name: "Task 3",
-            notes: "More task notes",
-            status: .done,
-            dueDate: yesterday
+            notes: "I don't have a due date",
+            status: .todo,
+            hasDueDate: false
         )
     ]
 }
