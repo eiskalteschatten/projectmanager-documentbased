@@ -7,7 +7,8 @@
 
 import Foundation
 
-struct Bookmark: Codable {
-    var name: String
-    var url: String
+struct Bookmark: Codable, Identifiable {
+    var id = UUID()
+    var name: String?
+    var url: String?
 }

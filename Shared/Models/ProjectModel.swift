@@ -11,6 +11,6 @@ struct Project: Codable {
     var state: StateModel
     var settings: SettingsModel
     var projectInfo: ProjectInfo
-    var tasks: [Task]
-    var bookmarks: [Bookmark]?
+    var tasks: [Task] = []
+    var bookmarks: [Bookmark]? = []
 }
