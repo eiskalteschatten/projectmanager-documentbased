@@ -45,12 +45,19 @@ struct TasksView: View {
                             .textFieldStyle(PlainTextFieldStyle())
                         
                         
-                        TextField("Notes", text: $document.project.tasks[index].notes, onEditingChanged: { (editingChanged) in
-                            self.selection = editingChanged ? index : nil
-                        })
-                            .textFieldStyle(PlainTextFieldStyle())
-                            .font(.system(size: 12))
-                            .opacity(0.8)
+                        HStack(spacing: 15) {
+                            if document.project.tasks[index].hasDueDate && document.project.tasks[index].dueDate != nil {
+                                Text(getLocalizedShortDateTime(date: document.project.tasks[index].dueDate!))
+                                    .font(.system(size: 12))
+                            }
+                            
+                            TextField("Notes", text: $document.project.tasks[index].notes, onEditingChanged: { (editingChanged) in
+                                self.selection = editingChanged ? index : nil
+                            })
+                                .textFieldStyle(PlainTextFieldStyle())
+                                .font(.system(size: 12))
+                        }
+                        .opacity(0.8)
                     }
                     
                     Spacer()

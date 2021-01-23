@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		934AF17225BC4115005E1B27 /* Helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 934AF17125BC4115005E1B27 /* Helpers.swift */; };
+		934AF17325BC4115005E1B27 /* Helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 934AF17125BC4115005E1B27 /* Helpers.swift */; };
 		93502CCE25BAF47300CC7402 /* ProjectInfoModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93502CCD25BAF47300CC7402 /* ProjectInfoModel.swift */; };
 		93502CCF25BAF47300CC7402 /* ProjectInfoModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93502CCD25BAF47300CC7402 /* ProjectInfoModel.swift */; };
 		93502CD525BAF56200CC7402 /* DefaultProjectData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93502CD425BAF56200CC7402 /* DefaultProjectData.swift */; };
@@ -58,6 +60,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		934AF17125BC4115005E1B27 /* Helpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Helpers.swift; sourceTree = "<group>"; };
 		93502CCD25BAF47300CC7402 /* ProjectInfoModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectInfoModel.swift; sourceTree = "<group>"; };
 		93502CD425BAF56200CC7402 /* DefaultProjectData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultProjectData.swift; sourceTree = "<group>"; };
 		9366CD0A25BAE04600B56A2D /* StateModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StateModel.swift; sourceTree = "<group>"; };
@@ -168,6 +171,7 @@
 				93E135C225A32D67003F7423 /* Views */,
 				93833D3125A37384005FF3C0 /* Constants.swift */,
 				9392F40625BAC55A0049C937 /* GlobalExtensions.swift */,
+				934AF17125BC4115005E1B27 /* Helpers.swift */,
 				93E1358125A32D1C003F7423 /* Assets.xcassets */,
 			);
 			path = Shared;
@@ -406,6 +410,7 @@
 				93D3829125BB39B700189D46 /* iOSImagePicker.swift in Sources */,
 				93E135AC25A32D1C003F7423 /* ContentView.swift in Sources */,
 				93C84B8225BB7399001D9889 /* TaskModel.swift in Sources */,
+				934AF17225BC4115005E1B27 /* Helpers.swift in Sources */,
 				93833D3225A37384005FF3C0 /* Constants.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -415,6 +420,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				93502CCF25BAF47300CC7402 /* ProjectInfoModel.swift in Sources */,
+				934AF17325BC4115005E1B27 /* Helpers.swift in Sources */,
 				9392F40825BAC55A0049C937 /* GlobalExtensions.swift in Sources */,
 				93E135AB25A32D1C003F7423 /* ProjectManagerDocument.swift in Sources */,
 				93E135A925A32D1C003F7423 /* ProjectManagerApp.swift in Sources */,
