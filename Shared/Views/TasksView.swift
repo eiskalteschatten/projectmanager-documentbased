@@ -123,7 +123,7 @@ fileprivate struct TasksEditView: View {
     var body: some View {
         #if os(macOS)
         TasksEditContentView(document: $document, showEditTask: self.$showEditTask, index: self.$index)
-            .frame(maxWidth: .infinity, maxHeight: 500)
+            .frame(minWidth: 400, maxWidth: .infinity, maxHeight: 500)
         #else
         NavigationView {
             TasksEditContentView(document: $document, showEditTask: self.$showEditTask, index: self.$index)
@@ -131,7 +131,7 @@ fileprivate struct TasksEditView: View {
                 .navigationBarItems(trailing: Button(action: {
                     self.showEditTask = false
                 }) {
-                    Text("Done").bold()
+                    TasksEditCloseButtonView(showEditTask: $showEditTask)
                 })
         }
         #endif
@@ -144,23 +144,66 @@ fileprivate struct TasksEditContentView: View {
     @Binding var index: Int
     
     var body: some View {
-        VStack(alignment: .leading) {
-            #if os(macOS)
-            Text("Edit Task")
-                .font(.system(size: 15.0))
-                .bold()
-            #endif
+        HStack(alignment: .top) {
+            VStack(alignment: .leading) {
+                HStack {
+                    TextField("Task", text: $document.project.tasks[index].name)
+                        .textFieldStyle(PlainTextFieldStyle())
+                        .font(.system(size: 18.0))
+                    
+                    #if os(macOS)
+                    Spacer()
+                    TasksEditCloseButtonView(showEditTask: $showEditTask)
+                    #endif
+                }
+                
+                TextField("Notes", text: $document.project.tasks[index].notes)
+                    .textFieldStyle(PlainTextFieldStyle())
+                
+                Divider()
+                    .padding(.vertical, 10)
             
-            TextField("Task", text: $document.project.tasks[index].name)
-            TextField("Notes", text: $document.project.tasks[index].notes)
-            
-            #if os(macOS)
-            Button("Close") {
-                self.showEditTask = false
+                Toggle(isOn: $document.project.tasks[index].hasDueDate) {
+                    Text("Task is due on day:")
+                }
+                
+                if document.project.tasks[index].hasDueDate {
+                    DatePicker(
+                        "",
+                        selection: Binding<Date>(
+                            get: {document.project.tasks[index].dueDate ?? Date()},
+                            set: {document.project.tasks[index].dueDate = $0}
+                        ),
+                        displayedComponents: [.date, .hourAndMinute]
+                    )
+                    .labelsHidden()
+                }
+                
+                Spacer()
             }
-            #endif
         }
         .padding()
+    }
+}
+
+fileprivate struct TasksEditCloseButtonView: View {
+    @Binding var showEditTask: Bool
+    
+    var body: some View {
+        #if os(macOS)
+        let fontSize = CGFloat(20.0)
+        #else
+        let fontSize = CGFloat(25.0)
+        #endif
+        
+        Button(action: {
+            self.showEditTask = false
+        }) {
+            Image(systemName: "xmark.circle.fill")
+                .font(.system(size: fontSize))
+                .foregroundColor(.gray)
+        }
+        .buttonStyle(PlainButtonStyle())
     }
 }
 
