@@ -30,6 +30,11 @@ struct TasksView: View {
                     
                     Button(action: {
                         self.toggleTaskDone(index: index)
+                        
+                        #if !os(macOS)
+                        let impactMed = UIImpactFeedbackGenerator(style: .medium)
+                        impactMed.impactOccurred()
+                        #endif
                     }) {
                         Image(systemName: circle)
                             .font(.system(size: fontSize))
@@ -80,6 +85,7 @@ struct TasksView: View {
                             )
                     }
                 }
+                .if(task.status == .done) { $0.opacity(0.5) }
                 .padding(.vertical, 5)
                 .sheet(isPresented: self.$showEditTask) {
                     TasksEditView(document: $document, showEditTask: self.$showEditTask, index: self.$editTaskIndex)
@@ -107,9 +113,8 @@ struct TasksView: View {
     }
     
     private func toggleTaskDone(index: Int) {
-//        self.document.project.tasks[index].status === Task.TaskStatus.done
-//            ? self.document.project.tasks[index].status = Task.TaskStatus.todo
-//            : self.document.project.tasks[index].status = Task.TaskStatus.done
+        self.document.project.tasks[index].status =
+            self.document.project.tasks[index].status == .done ? .todo : .done
     }
     
     private func confirmDelete(offsets: IndexSet) {
