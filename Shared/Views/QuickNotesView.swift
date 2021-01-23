@@ -82,7 +82,6 @@ fileprivate struct QuickNoteView: View {
     var body: some View {
         ZStack {
             RoundedRectangle(cornerRadius: 5, style: .continuous)
-//                .fill(Color(.sRGB, red: quickNote.color.r, green: quickNote.color.g, blue: quickNote.color.b, opacity: quickNote.color.o))
                 .fill(Color.yellow)
                 .shadow(radius: 2)
         
@@ -90,9 +89,11 @@ fileprivate struct QuickNoteView: View {
                 TextField("Name", text: self.$quickNote.name)
                     .textFieldStyle(PlainTextFieldStyle())
                     .font(.system(size: 18))
+                    .foregroundColor(.black)
 
                 TextField("Note...", text: self.$quickNote.content)
                     .textFieldStyle(PlainTextFieldStyle())
+                    .foregroundColor(.black)
             }.padding(10)
         }
     }
