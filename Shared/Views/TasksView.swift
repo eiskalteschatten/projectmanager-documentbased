@@ -96,6 +96,7 @@ struct TasksView: View {
             let newTask = Task()
             document.project.tasks.append(newTask)
             self.editTaskIndex = document.project.tasks.count - 1
+            self.showEditTask = true
         }
     }
     
