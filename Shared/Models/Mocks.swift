@@ -52,6 +52,19 @@ func createMockTasks() -> [Task] {
     ]
 }
 
+func createMockBookmarks() -> [Bookmark] {
+    return [
+        Bookmark(
+            name: "AlexSeifert.com",
+            url: "https://www.alexseifert.com"
+        ),
+        Bookmark(
+            name: "History Rhymes",
+            url: "https://www.historyrhymes.info"
+        )
+    ]
+}
+
 func createMockProjectInfo() -> ProjectInfo {
     var oneMonthFromNow: Date {
         var components = DateComponents()
@@ -73,7 +86,8 @@ func createMockProject() -> Project {
         state: createMockStateData(),
         settings: createMockSettingsData(),
         projectInfo: createMockProjectInfo(),
-        tasks: createMockTasks()
+        tasks: createMockTasks(),
+        bookmarks: createMockBookmarks()
     )
 }
 

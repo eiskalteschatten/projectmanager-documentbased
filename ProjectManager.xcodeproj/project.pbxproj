@@ -40,6 +40,8 @@
 		93E135AD25A32D1C003F7423 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93E1358025A32D1C003F7423 /* ContentView.swift */; };
 		93E135AE25A32D1C003F7423 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 93E1358125A32D1C003F7423 /* Assets.xcassets */; };
 		93E135AF25A32D1C003F7423 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 93E1358125A32D1C003F7423 /* Assets.xcassets */; };
+		93E2BD3C25BC7A2F00FF0B1A /* BookmarkModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93E2BD3B25BC7A2F00FF0B1A /* BookmarkModel.swift */; };
+		93E2BD3D25BC7A2F00FF0B1A /* BookmarkModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93E2BD3B25BC7A2F00FF0B1A /* BookmarkModel.swift */; };
 		93E2FBC025BC47FA00ACFD93 /* SettingsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93E2FBBF25BC47FA00ACFD93 /* SettingsModel.swift */; };
 		93E2FBC125BC47FA00ACFD93 /* SettingsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93E2FBBF25BC47FA00ACFD93 /* SettingsModel.swift */; };
 /* End PBXBuildFile section */
@@ -89,6 +91,7 @@
 		93E135A125A32D1C003F7423 /* Tests macOS.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Tests macOS.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		93E135A525A32D1C003F7423 /* Tests_macOS.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tests_macOS.swift; sourceTree = "<group>"; };
 		93E135A725A32D1C003F7423 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		93E2BD3B25BC7A2F00FF0B1A /* BookmarkModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookmarkModel.swift; sourceTree = "<group>"; };
 		93E2FBBF25BC47FA00ACFD93 /* SettingsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -134,6 +137,7 @@
 				93E2FBBF25BC47FA00ACFD93 /* SettingsModel.swift */,
 				93502CCD25BAF47300CC7402 /* ProjectInfoModel.swift */,
 				93C84B8125BB7399001D9889 /* TaskModel.swift */,
+				93E2BD3B25BC7A2F00FF0B1A /* BookmarkModel.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -403,6 +407,7 @@
 			files = (
 				93E2FBC025BC47FA00ACFD93 /* SettingsModel.swift in Sources */,
 				93502CCE25BAF47300CC7402 /* ProjectInfoModel.swift in Sources */,
+				93E2BD3C25BC7A2F00FF0B1A /* BookmarkModel.swift in Sources */,
 				9392F40725BAC55A0049C937 /* GlobalExtensions.swift in Sources */,
 				93E135AA25A32D1C003F7423 /* ProjectManagerDocument.swift in Sources */,
 				93E135A825A32D1C003F7423 /* ProjectManagerApp.swift in Sources */,
@@ -429,6 +434,7 @@
 				9392F40825BAC55A0049C937 /* GlobalExtensions.swift in Sources */,
 				93E135AB25A32D1C003F7423 /* ProjectManagerDocument.swift in Sources */,
 				93E135A925A32D1C003F7423 /* ProjectManagerApp.swift in Sources */,
+				93E2BD3D25BC7A2F00FF0B1A /* BookmarkModel.swift in Sources */,
 				93502CD625BAF56200CC7402 /* DefaultProjectData.swift in Sources */,
 				93E2FBC125BC47FA00ACFD93 /* SettingsModel.swift in Sources */,
 				9392F41A25BAC62A0049C937 /* Mocks.swift in Sources */,

@@ -28,6 +28,7 @@ func getDefaultProjectData() -> Project {
         state: getDefaultStateData(),
         settings: getDefaultSettingsData(),
         projectInfo: getDefaultProjectInfoData(),
-        tasks: []
+        tasks: [],
+        bookmarks: []
     )
 }
