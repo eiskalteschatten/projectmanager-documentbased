@@ -101,6 +101,7 @@ fileprivate struct NavigationViewWrapper<Content>: View where Content: View {
                         }
                     }) {
                         Label("Back", systemImage: "chevron.left")
+                            .font(.system(size: 22.0))
                     }
                 }
             }
