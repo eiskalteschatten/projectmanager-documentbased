@@ -65,6 +65,8 @@ struct BookmarksView: View {
 }
 
 fileprivate struct BookmarksListItemView: View {
+    @Environment(\.openURL) var openURL
+    
     @Binding var bookmark: Bookmark
     var index: Int
     
@@ -75,6 +77,23 @@ fileprivate struct BookmarksListItemView: View {
 
             TextField("URL", text: self.$bookmark.url)
                 .textFieldStyle(PlainTextFieldStyle())
+            
+            
+            #if os(macOS)
+            let fontSize = CGFloat(20.0)
+            #else
+            let fontSize = CGFloat(25.0)
+            #endif
+            
+            Button(action: {
+                openURL(URL(string: bookmark.url)!)
+            }) {
+                Image(systemName: "arrow.up.right.circle")
+                    .font(.system(size: fontSize))
+                    .foregroundColor(.gray)
+            }
+            .buttonStyle(PlainButtonStyle())
+            .disabled(bookmark.url == "")
         }
         .padding(.vertical, 5)
     }
