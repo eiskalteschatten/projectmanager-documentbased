@@ -11,7 +11,7 @@ struct TasksView: View {
     @Binding var document: ProjectManagerDocument
     @State private var selection: Int?
     @State private var showEditTask: Bool = false
-    @State private var editTaskIndex: Int = -1
+    @State private var editTaskIndex: Int = 0
     
     var body: some View {
         VStack {
@@ -75,16 +75,15 @@ struct TasksView: View {
                                 let fontSize = CGFloat(22.0)
                                 #endif
                                 
-                                Image(systemName: "info.circle")
-                                    .font(.system(size: fontSize))
-                                    .foregroundColor(.white)
-                                    .gesture(
-                                        TapGesture()
-                                            .onEnded { _ in
-                                                self.editTaskIndex = index
-                                                self.showEditTask = true
-                                            }
-                                    )
+                                Button(action: {
+                                    self.editTaskIndex = index
+                                    self.showEditTask = true
+                                }) {
+                                    Image(systemName: "info.circle")
+                                        .font(.system(size: fontSize))
+                                        .foregroundColor(.white)
+                                }
+                                .buttonStyle(PlainButtonStyle())
                             }
                         }
                         .if(task.status == .done) { $0.opacity(0.5) }
@@ -94,7 +93,7 @@ struct TasksView: View {
                         }
                     }
                 }
-                .onDelete(perform: self.confirmDelete)
+                .onDelete(perform: self.deleteTask)
             }
         }
         .toolbar() {
@@ -142,7 +141,7 @@ struct TasksView: View {
             self.document.project.tasks[index].status == .done ? .todo : .done
     }
     
-    private func confirmDelete(offsets: IndexSet) {
+    private func deleteTask(offsets: IndexSet) {
         withAnimation {
             for offset in offsets {
                 self.document.project.tasks.remove(at: offset)
