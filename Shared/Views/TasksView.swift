@@ -98,14 +98,13 @@ struct TasksView: View {
             }
         }
         .toolbar() {
-            ToolbarItem() {
-                Button(action: self.addTask) {
-                    Label("Add Task", systemImage: "plus")
-                        .font(.system(size: 22.0))
-                }
-            }
+            #if os(macOS)
+            let placement = ToolbarItemPlacement.automatic
+            #else
+            let placement = ToolbarItemPlacement.navigationBarTrailing
+            #endif
             
-            ToolbarItem() {
+            ToolbarItem(placement: placement) {
                 Menu {
                     Button(action: { document.project.settings.showDoneTasks.toggle() }) {
                         let showHide = document.project.settings.showDoneTasks ? "Hide" : "Show"
@@ -115,6 +114,13 @@ struct TasksView: View {
                 }
                 label: {
                     Image(systemName: "ellipsis.circle")
+                        .font(.system(size: 22.0))
+                }
+            }
+            
+            ToolbarItem(placement: placement) {
+                Button(action: self.addTask) {
+                    Label("Add Task", systemImage: "plus")
                         .font(.system(size: 22.0))
                 }
             }
