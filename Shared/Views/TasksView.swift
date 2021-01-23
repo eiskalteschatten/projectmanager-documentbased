@@ -20,74 +20,35 @@ struct TasksView: View {
                     let task = document.project.tasks[index]
                     
                     if task.status != .done || document.project.settings.showDoneTasks && task.status == .done {
-                        HStack {
-                            let taskDone = task.status == Task.TaskStatus.done
-                            let circle = taskDone ? "largecircle.fill.circle" : "circle"
-                            
-                            #if os(macOS)
-                            let fontSize = CGFloat(20.0)
-                            #else
-                            let fontSize = CGFloat(25.0)
-                            #endif
-                            
+                        TasksListItemView(
+                            document: $document,
+                            showEditTask: self.$showEditTask,
+                            editTaskIndex: self.$editTaskIndex,
+                            selection: self.$selection,
+                            task: task,
+                            index: index
+                        )
+                        .contextMenu {
+                            Button(action: self.addTask) {
+                                Text("New Task")
+                                Image(systemName: "plus")
+                            }
+
                             Button(action: {
-                                self.toggleTaskDone(index: index)
-                                
-                                #if !os(macOS)
-                                let impactMed = UIImpactFeedbackGenerator(style: .medium)
-                                impactMed.impactOccurred()
-                                #endif
+                                self.editTaskIndex = index
+                                self.showEditTask = true
                             }) {
-                                Image(systemName: circle)
-                                    .font(.system(size: fontSize))
-                                    .foregroundColor(taskDone ? .blue : .gray)
+                                Text("Edit Task")
+                                Image(systemName: "pencil")
                             }
-                            .buttonStyle(PlainButtonStyle())
-                            
-                            VStack {
-                                TextField("Task", text: $document.project.tasks[index].name, onEditingChanged: { (editingChanged) in
-                                    self.selection = editingChanged ? index : nil
-                                })
-                                .textFieldStyle(PlainTextFieldStyle())
-                                
-                                
-                                HStack(spacing: 15) {
-                                    if document.project.tasks[index].hasDueDate && document.project.tasks[index].dueDate != nil {
-                                        Text(getLocalizedShortDateTime(date: document.project.tasks[index].dueDate!))
-                                            .font(.system(size: 12))
-                                    }
-                                    
-                                    TextField("Notes", text: $document.project.tasks[index].notes, onEditingChanged: { (editingChanged) in
-                                        self.selection = editingChanged ? index : nil
-                                    })
-                                    .textFieldStyle(PlainTextFieldStyle())
-                                    .font(.system(size: 12))
-                                }
-                                .opacity(0.8)
-                            }
-                            
-                            Spacer()
-                            
-                            if self.selection == index {
-                                #if os(macOS)
-                                let fontSize = CGFloat(17.0)
-                                #else
-                                let fontSize = CGFloat(22.0)
-                                #endif
-                                
-                                Button(action: {
-                                    self.editTaskIndex = index
-                                    self.showEditTask = true
-                                }) {
-                                    Image(systemName: "info.circle")
-                                        .font(.system(size: fontSize))
-                                        .foregroundColor(.white)
-                                }
-                                .buttonStyle(PlainButtonStyle())
+
+                            Divider()
+
+                            Button(action: { self.deleteTask(offsets: [index]) }) {
+                                Text("Delete Task")
+                                Image(systemName: "trash")
                             }
                         }
-                        .if(task.status == .done) { $0.opacity(0.5) }
-                        .padding(.vertical, 5)
                     }
                 }
                 .onDelete(perform: self.deleteTask)
@@ -136,17 +97,97 @@ struct TasksView: View {
         }
     }
     
-    private func toggleTaskDone(index: Int) {
-        self.document.project.tasks[index].status =
-            self.document.project.tasks[index].status == .done ? .todo : .done
-    }
-    
     private func deleteTask(offsets: IndexSet) {
         withAnimation {
             for offset in offsets {
                 self.document.project.tasks.remove(at: offset)
             }
         }
+    }
+}
+
+fileprivate struct TasksListItemView: View {
+    @Binding var document: ProjectManagerDocument
+    @Binding var showEditTask: Bool
+    @Binding var editTaskIndex: Int
+    @Binding var selection: Int?
+    var task: Task
+    var index: Int
+    
+    var body: some View {
+        HStack {
+            let taskDone = task.status == Task.TaskStatus.done
+            let circle = taskDone ? "largecircle.fill.circle" : "circle"
+            
+            #if os(macOS)
+            let fontSize = CGFloat(20.0)
+            #else
+            let fontSize = CGFloat(25.0)
+            #endif
+            
+            Button(action: {
+                self.toggleTaskDone(index: index)
+                
+                #if !os(macOS)
+                let impactMed = UIImpactFeedbackGenerator(style: .medium)
+                impactMed.impactOccurred()
+                #endif
+            }) {
+                Image(systemName: circle)
+                    .font(.system(size: fontSize))
+                    .foregroundColor(taskDone ? .blue : .gray)
+            }
+            .buttonStyle(PlainButtonStyle())
+            
+            VStack {
+                TextField("Task", text: $document.project.tasks[index].name, onEditingChanged: { (editingChanged) in
+                    self.selection = editingChanged ? index : nil
+                })
+                .textFieldStyle(PlainTextFieldStyle())
+                
+                
+                HStack(spacing: 15) {
+                    if document.project.tasks[index].hasDueDate && document.project.tasks[index].dueDate != nil {
+                        Text(getLocalizedShortDateTime(date: document.project.tasks[index].dueDate!))
+                            .font(.system(size: 12))
+                    }
+                    
+                    TextField("Notes", text: $document.project.tasks[index].notes, onEditingChanged: { (editingChanged) in
+                        self.selection = editingChanged ? index : nil
+                    })
+                    .textFieldStyle(PlainTextFieldStyle())
+                    .font(.system(size: 12))
+                }
+                .opacity(0.8)
+            }
+            
+            Spacer()
+            
+            if self.selection == index {
+                #if os(macOS)
+                let fontSize = CGFloat(17.0)
+                #else
+                let fontSize = CGFloat(22.0)
+                #endif
+                
+                Button(action: {
+                    self.editTaskIndex = index
+                    self.showEditTask = true
+                }) {
+                    Image(systemName: "info.circle")
+                        .font(.system(size: fontSize))
+                        .foregroundColor(.white)
+                }
+                .buttonStyle(PlainButtonStyle())
+            }
+        }
+        .if(task.status == .done) { $0.opacity(0.5) }
+        .padding(.vertical, 5)
+    }
+    
+    private func toggleTaskDone(index: Int) {
+        self.document.project.tasks[index].status =
+            self.document.project.tasks[index].status == .done ? .todo : .done
     }
 }
 
