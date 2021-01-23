@@ -19,24 +19,21 @@ struct BookmarksView: View {
                     set: { self.document.project.bookmarks![index] = $0 }
                 )
                 
-                BookmarksListItemView(
-                    bookmark: bookmark,
-                    index: index
-                )
-                .padding(.vertical, 5)
-                .contextMenu {
-                    Button(action: self.addBookmark) {
-                        Text("New Bookmark")
-                        Image(systemName: "plus")
-                    }
+                BookmarksListItemView(bookmark: bookmark, index: index)
+                    .padding(.vertical, 5)
+                    .contextMenu {
+                        Button(action: self.addBookmark) {
+                            Text("New Bookmark")
+                            Image(systemName: "plus")
+                        }
 
-                    Divider()
+                        Divider()
 
-                    Button(action: { self.deleteBookmark(offsets: [index]) }) {
-                        Text("Delete Bookmark")
-                        Image(systemName: "trash")
+                        Button(action: { self.deleteBookmark(offsets: [index]) }) {
+                            Text("Delete Bookmark")
+                            Image(systemName: "trash")
+                        }
                     }
-                }
             }
             .onDelete(perform: self.deleteBookmark)
         }
