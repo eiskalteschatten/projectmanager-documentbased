@@ -10,15 +10,20 @@ import SwiftUI
 struct QuickNotesView: View {
     @Binding var document: ProjectManagerDocument
     
+    private let rows = [
+        GridItem(.flexible())
+    ]
+    
     var body: some View {
-        HStack(alignment: .top, spacing: 10) {
-            ForEach(document.project.quickNotes?.indices ?? 0..<0, id: \.self) { index in
-                let quickNote = Binding<QuickNote>(
-                    get: { self.document.project.quickNotes![index] },
-                    set: { self.document.project.quickNotes![index] = $0 }
-                )
-                
-                QuickNoteView(quickNote: quickNote, index: index)
+        ScrollView {
+            LazyHGrid(rows: rows, spacing: 10) {
+                ForEach(document.project.quickNotes?.indices ?? 0..<0, id: \.self) { index in
+                    let quickNote = Binding<QuickNote>(
+                        get: { self.document.project.quickNotes![index] },
+                        set: { self.document.project.quickNotes![index] = $0 }
+                    )
+                    
+                    QuickNoteView(quickNote: quickNote, index: index)
                     .contextMenu {
                         Button(action: self.addNote) {
                             Text("New Note")
@@ -32,8 +37,11 @@ struct QuickNotesView: View {
                             Image(systemName: "trash")
                         }
                     }
+                }
             }
+            .frame(minWidth: 0, maxWidth: .infinity, minHeight: 0, maxHeight: .infinity, alignment: .topLeading)
         }
+        .padding()
         .toolbar() {
             #if os(macOS)
             let placement = ToolbarItemPlacement.automatic
@@ -72,27 +80,21 @@ fileprivate struct QuickNoteView: View {
     var index: Int
     
     var body: some View {
-        HStack(alignment: .top) {
-            ZStack {
-                RoundedRectangle(cornerRadius: 5, style: .continuous)
-    //                .fill(Color(.sRGB, red: quickNote.color.r, green: quickNote.color.g, blue: quickNote.color.b, opacity: quickNote.color.o))
-                    .fill(Color.red)
-                    .frame(width: 200, height: 200)
-            
-                VStack(alignment: .leading) {
-                    TextField("Name", text: self.$quickNote.name)
-                        .textFieldStyle(PlainTextFieldStyle())
+        ZStack {
+            RoundedRectangle(cornerRadius: 5, style: .continuous)
+//                .fill(Color(.sRGB, red: quickNote.color.r, green: quickNote.color.g, blue: quickNote.color.b, opacity: quickNote.color.o))
+                .fill(Color.yellow)
+                .shadow(radius: 2)
+        
+            VStack(alignment: .leading, spacing: 5) {
+                TextField("Name", text: self.$quickNote.name)
+                    .textFieldStyle(PlainTextFieldStyle())
+                    .font(.system(size: 18))
 
-                    TextField("Note...", text: self.$quickNote.content)
-                        .textFieldStyle(PlainTextFieldStyle())
-                }
-                .padding(10)
-            }
-            
-            Spacer()
+                TextField("Note...", text: self.$quickNote.content)
+                    .textFieldStyle(PlainTextFieldStyle())
+            }.padding(10)
         }
-        .padding(10)
-        .frame(width: 200, height: 200)
     }
 }
 
