@@ -51,7 +51,7 @@ struct ContentView: View {
                 tag: ProjectScreen.quickNotes,
                 selection: $screen,
                 label: {
-                    Label("Notes", systemImage: "bookmark")
+                    Label("Notes", systemImage: "note.text")
                 }
             )
         }
