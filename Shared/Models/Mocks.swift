@@ -78,6 +78,12 @@ func createMockQuickNotes() -> [QuickNote] {
             content: "Or maybe not many notes at all",
             pinned: false,
             color: QuickNote.RgboColor(r: 250.0, g: 238.0, b: 116.0, o: 1.0)
+        ),
+        QuickNote(
+            name: "This note is pinned",
+            content: "",
+            pinned: false,
+            color: QuickNote.RgboColor(r: 250.0, g: 238.0, b: 116.0, o: 1.0)
         )
     ]
 }
