@@ -11,6 +11,10 @@ func createMockStateData() -> StateModel {
     return StateModel(screen: ProjectScreen.projectInfo.rawValue)
 }
 
+func createMockSettingsData() -> SettingsModel {
+    return SettingsModel(showHiddenTasks: true)
+}
+
 func createMockTasks() -> [Task] {
     var yesterday: Date {
         var components = DateComponents()
@@ -67,6 +71,7 @@ func createMockProjectInfo() -> ProjectInfo {
 func createMockProject() -> Project {
     return Project(
         state: createMockStateData(),
+        settings: createMockSettingsData(),
         projectInfo: createMockProjectInfo(),
         tasks: createMockTasks()
     )

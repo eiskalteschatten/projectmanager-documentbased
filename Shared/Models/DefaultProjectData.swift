@@ -11,6 +11,10 @@ func getDefaultStateData() -> StateModel {
     return StateModel(screen: ProjectScreen.projectInfo.rawValue)
 }
 
+func getDefaultSettingsData() -> SettingsModel {
+    return SettingsModel(showHiddenTasks: false)
+}
+
 func getDefaultProjectInfoData() -> ProjectInfo {
     return ProjectInfo(
         name: "",
@@ -22,6 +26,7 @@ func getDefaultProjectInfoData() -> ProjectInfo {
 func getDefaultProjectData() -> Project {
     return Project(
         state: getDefaultStateData(),
+        settings: getDefaultSettingsData(),
         projectInfo: getDefaultProjectInfoData(),
         tasks: []
     )
