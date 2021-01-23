@@ -8,5 +8,5 @@
 import Foundation
 
 struct SettingsModel: Codable {
-    var showHiddenTasks: Bool = false
+    var showDoneTasks: Bool = false
 }

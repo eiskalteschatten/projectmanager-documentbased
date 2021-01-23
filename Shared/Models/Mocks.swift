@@ -12,7 +12,7 @@ func createMockStateData() -> StateModel {
 }
 
 func createMockSettingsData() -> SettingsModel {
-    return SettingsModel(showHiddenTasks: true)
+    return SettingsModel(showDoneTasks: true)
 }
 
 func createMockTasks() -> [Task] {

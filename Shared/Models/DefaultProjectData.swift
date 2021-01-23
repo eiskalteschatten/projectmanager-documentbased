@@ -12,7 +12,7 @@ func getDefaultStateData() -> StateModel {
 }
 
 func getDefaultSettingsData() -> SettingsModel {
-    return SettingsModel(showHiddenTasks: false)
+    return SettingsModel(showDoneTasks: false)
 }
 
 func getDefaultProjectInfoData() -> ProjectInfo {
