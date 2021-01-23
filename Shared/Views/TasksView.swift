@@ -46,7 +46,7 @@ struct TasksView: View {
                         TextField("Task", text: $document.project.tasks[index].name, onEditingChanged: { (editingChanged) in
                             self.selection = editingChanged ? index : nil
                         })
-                            .textFieldStyle(PlainTextFieldStyle())
+                        .textFieldStyle(PlainTextFieldStyle())
                         
                         
                         HStack(spacing: 15) {
@@ -58,8 +58,8 @@ struct TasksView: View {
                             TextField("Notes", text: $document.project.tasks[index].notes, onEditingChanged: { (editingChanged) in
                                 self.selection = editingChanged ? index : nil
                             })
-                                .textFieldStyle(PlainTextFieldStyle())
-                                .font(.system(size: 12))
+                            .textFieldStyle(PlainTextFieldStyle())
+                            .font(.system(size: 12))
                         }
                         .opacity(0.8)
                     }
