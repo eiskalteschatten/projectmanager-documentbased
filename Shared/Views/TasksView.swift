@@ -137,12 +137,12 @@ fileprivate struct TasksListItemView: View {
             }
             .buttonStyle(PlainButtonStyle())
             
-            VStack {
+            VStack(spacing: 5) {
                 TextField("Task", text: $document.project.tasks[index].name, onEditingChanged: { (editingChanged) in
                     self.selection = editingChanged ? index : nil
                 })
+                .font(.system(size: 14.0, weight: .semibold))
                 .textFieldStyle(PlainTextFieldStyle())
-                
                 
                 HStack(spacing: 15) {
                     if document.project.tasks[index].hasDueDate && document.project.tasks[index].dueDate != nil {
@@ -154,7 +154,7 @@ fileprivate struct TasksListItemView: View {
                         self.selection = editingChanged ? index : nil
                     })
                     .textFieldStyle(PlainTextFieldStyle())
-                    .font(.system(size: 12))
+                    .font(.system(size: 13))
                 }
                 .opacity(0.8)
             }
@@ -223,7 +223,7 @@ fileprivate struct TasksEditContentView: View {
                 HStack {
                     TextField("Task", text: $document.project.tasks[index].name)
                         .textFieldStyle(PlainTextFieldStyle())
-                        .font(.system(size: 18.0))
+                        .font(.system(size: 18.0, weight: .semibold))
                     
                     #if os(macOS)
                     Spacer()
