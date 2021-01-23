@@ -100,22 +100,22 @@ struct TasksView: View {
     private func addTask() {
         withAnimation {
             let newTask = Task()
-            document.project.tasks.append(newTask)
+            self.document.project.tasks.append(newTask)
             self.editTaskIndex = document.project.tasks.count - 1
             self.showEditTask = true
         }
     }
     
     private func toggleTaskDone(index: Int) {
-//        document.project.tasks[index].status === Task.TaskStatus.done
-//            ? document.project.tasks[index].status = Task.TaskStatus.todo
-//            : document.project.tasks[index].status = Task.TaskStatus.done
+//        self.document.project.tasks[index].status === Task.TaskStatus.done
+//            ? self.document.project.tasks[index].status = Task.TaskStatus.todo
+//            : self.document.project.tasks[index].status = Task.TaskStatus.done
     }
     
     private func confirmDelete(offsets: IndexSet) {
         withAnimation {
             for offset in offsets {
-                document.project.tasks.remove(at: offset)
+                self.document.project.tasks.remove(at: offset)
             }
         }
     }
