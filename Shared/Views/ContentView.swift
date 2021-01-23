@@ -8,7 +8,7 @@
 import SwiftUI
 
 enum ProjectScreen: Int {
-    case projectInfo, tasks
+    case projectInfo, tasks, bookmarks
 }
 
 struct ContentView: View {
@@ -36,6 +36,14 @@ struct ContentView: View {
                 selection: $screen,
                 label: {
                     Label("Tasks", systemImage: "checkmark.square")
+                }
+            )
+            NavigationLink(
+                destination: BookmarksView(document: $document),
+                tag: ProjectScreen.bookmarks,
+                selection: $screen,
+                label: {
+                    Label("Bookmarks", systemImage: "bookmark")
                 }
             )
         }

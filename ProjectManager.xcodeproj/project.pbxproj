@@ -42,6 +42,8 @@
 		93E135AF25A32D1C003F7423 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 93E1358125A32D1C003F7423 /* Assets.xcassets */; };
 		93E2BD3C25BC7A2F00FF0B1A /* BookmarkModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93E2BD3B25BC7A2F00FF0B1A /* BookmarkModel.swift */; };
 		93E2BD3D25BC7A2F00FF0B1A /* BookmarkModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93E2BD3B25BC7A2F00FF0B1A /* BookmarkModel.swift */; };
+		93E2BD4325BC7BC300FF0B1A /* BookmarksView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93E2BD4225BC7BC300FF0B1A /* BookmarksView.swift */; };
+		93E2BD4425BC7BC300FF0B1A /* BookmarksView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93E2BD4225BC7BC300FF0B1A /* BookmarksView.swift */; };
 		93E2FBC025BC47FA00ACFD93 /* SettingsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93E2FBBF25BC47FA00ACFD93 /* SettingsModel.swift */; };
 		93E2FBC125BC47FA00ACFD93 /* SettingsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93E2FBBF25BC47FA00ACFD93 /* SettingsModel.swift */; };
 /* End PBXBuildFile section */
@@ -92,6 +94,7 @@
 		93E135A525A32D1C003F7423 /* Tests_macOS.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tests_macOS.swift; sourceTree = "<group>"; };
 		93E135A725A32D1C003F7423 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		93E2BD3B25BC7A2F00FF0B1A /* BookmarkModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookmarkModel.swift; sourceTree = "<group>"; };
+		93E2BD4225BC7BC300FF0B1A /* BookmarksView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookmarksView.swift; sourceTree = "<group>"; };
 		93E2FBBF25BC47FA00ACFD93 /* SettingsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -236,8 +239,9 @@
 			isa = PBXGroup;
 			children = (
 				93E1358025A32D1C003F7423 /* ContentView.swift */,
-				93C84B6F25BB7297001D9889 /* TasksView.swift */,
 				9392F40D25BAC5B90049C937 /* ProjectInfoView.swift */,
+				93C84B6F25BB7297001D9889 /* TasksView.swift */,
+				93E2BD4225BC7BC300FF0B1A /* BookmarksView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -409,6 +413,7 @@
 				93502CCE25BAF47300CC7402 /* ProjectInfoModel.swift in Sources */,
 				93E2BD3C25BC7A2F00FF0B1A /* BookmarkModel.swift in Sources */,
 				9392F40725BAC55A0049C937 /* GlobalExtensions.swift in Sources */,
+				93E2BD4325BC7BC300FF0B1A /* BookmarksView.swift in Sources */,
 				93E135AA25A32D1C003F7423 /* ProjectManagerDocument.swift in Sources */,
 				93E135A825A32D1C003F7423 /* ProjectManagerApp.swift in Sources */,
 				93502CD525BAF56200CC7402 /* DefaultProjectData.swift in Sources */,
@@ -444,6 +449,7 @@
 				9392F40F25BAC5B90049C937 /* ProjectInfoView.swift in Sources */,
 				93C84B8325BB7399001D9889 /* TaskModel.swift in Sources */,
 				93E135AD25A32D1C003F7423 /* ContentView.swift in Sources */,
+				93E2BD4425BC7BC300FF0B1A /* BookmarksView.swift in Sources */,
 				93833D3325A37384005FF3C0 /* Constants.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
