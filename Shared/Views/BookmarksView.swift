@@ -69,7 +69,7 @@ fileprivate struct BookmarksListItemView: View {
     var index: Int
     
     var body: some View {
-        HStack(spacing: 10) {
+        HStack {
             TextField("Name", text: self.$bookmark.name)
                 .textFieldStyle(PlainTextFieldStyle())
 
