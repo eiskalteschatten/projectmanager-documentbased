@@ -88,9 +88,6 @@ struct TasksView: View {
                         }
                         .if(task.status == .done) { $0.opacity(0.5) }
                         .padding(.vertical, 5)
-                        .sheet(isPresented: self.$showEditTask) {
-                            TasksEditView(document: $document, showEditTask: self.$showEditTask, index: self.$editTaskIndex)
-                        }
                     }
                 }
                 .onDelete(perform: self.deleteTask)
@@ -123,6 +120,9 @@ struct TasksView: View {
                         .font(.system(size: 22.0))
                 }
             }
+        }
+        .sheet(isPresented: self.$showEditTask) {
+            TasksEditView(document: $document, showEditTask: self.$showEditTask, index: self.$editTaskIndex)
         }
         .navigationTitle("Tasks")
     }
