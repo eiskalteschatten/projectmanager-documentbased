@@ -71,13 +71,13 @@ fileprivate struct BookmarksListItemView: View {
     var index: Int
     
     var body: some View {
+        #if os(macOS)
         HStack {
             TextField("Name", text: self.$bookmark.name)
                 .textFieldStyle(PlainTextFieldStyle())
 
             TextField("URL", text: self.$bookmark.url)
                 .textFieldStyle(PlainTextFieldStyle())
-            
             
             #if os(macOS)
             let fontSize = CGFloat(20.0)
@@ -96,6 +96,34 @@ fileprivate struct BookmarksListItemView: View {
             .disabled(bookmark.url == "")
         }
         .padding(.vertical, 5)
+        #else
+        VStack {
+            TextField("Name", text: self.$bookmark.name)
+                .textFieldStyle(PlainTextFieldStyle())
+
+            HStack {
+                TextField("URL", text: self.$bookmark.url)
+                    .textFieldStyle(PlainTextFieldStyle())
+                
+                #if os(macOS)
+                let fontSize = CGFloat(20.0)
+                #else
+                let fontSize = CGFloat(25.0)
+                #endif
+                
+                Button(action: {
+                    openURL(URL(string: bookmark.url)!)
+                }) {
+                    Image(systemName: "arrow.up.right.circle")
+                        .font(.system(size: fontSize))
+                        .foregroundColor(.gray)
+                }
+                .buttonStyle(PlainButtonStyle())
+                .disabled(bookmark.url == "")
+            }
+        }
+        .padding(.vertical, 5)
+        #endif
     }
 }
 
