@@ -14,45 +14,43 @@ struct TasksView: View {
     @State private var editTaskIndex: Int = 0
     
     var body: some View {
-        VStack {
-            List(selection: $selection) {
-                ForEach(document.project.tasks.indices, id: \.self) { index in
-                    let task = document.project.tasks[index]
-                    
-                    if task.status != .done || document.project.settings.showDoneTasks && task.status == .done {
-                        TasksListItemView(
-                            document: $document,
-                            showEditTask: self.$showEditTask,
-                            editTaskIndex: self.$editTaskIndex,
-                            selection: self.$selection,
-                            task: task,
-                            index: index
-                        )
-                        .contextMenu {
-                            Button(action: self.addTask) {
-                                Text("New Task")
-                                Image(systemName: "plus")
-                            }
+        List(selection: $selection) {
+            ForEach(document.project.tasks.indices, id: \.self) { index in
+                let task = document.project.tasks[index]
+                
+                if task.status != .done || document.project.settings.showDoneTasks && task.status == .done {
+                    TasksListItemView(
+                        document: $document,
+                        showEditTask: self.$showEditTask,
+                        editTaskIndex: self.$editTaskIndex,
+                        selection: self.$selection,
+                        task: task,
+                        index: index
+                    )
+                    .contextMenu {
+                        Button(action: self.addTask) {
+                            Text("New Task")
+                            Image(systemName: "plus")
+                        }
 
-                            Button(action: {
-                                self.editTaskIndex = index
-                                self.showEditTask = true
-                            }) {
-                                Text("Edit Task")
-                                Image(systemName: "pencil")
-                            }
+                        Button(action: {
+                            self.editTaskIndex = index
+                            self.showEditTask = true
+                        }) {
+                            Text("Edit Task")
+                            Image(systemName: "pencil")
+                        }
 
-                            Divider()
+                        Divider()
 
-                            Button(action: { self.deleteTask(offsets: [index]) }) {
-                                Text("Delete Task")
-                                Image(systemName: "trash")
-                            }
+                        Button(action: { self.deleteTask(offsets: [index]) }) {
+                            Text("Delete Task")
+                            Image(systemName: "trash")
                         }
                     }
                 }
-                .onDelete(perform: self.deleteTask)
             }
+            .onDelete(perform: self.deleteTask)
         }
         .toolbar() {
             #if os(macOS)
