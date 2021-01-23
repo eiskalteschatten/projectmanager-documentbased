@@ -1,5 +1,5 @@
 //
-//  TasksListView.swift
+//  TasksView.swift
 //  ProjectManager
 //
 //  Created by Alex Seifert on 22/01/2021.
@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct TasksListView: View {
+struct TasksView: View {
     @Binding var document: ProjectManagerDocument
     @State private var newTaskIndex: Int?
     
@@ -39,7 +39,6 @@ struct TasksListView: View {
                     }
                 }
                 .padding(.vertical, 5)
-                .animation(.easeInOut)
             }
             .onDelete(perform: self.confirmDelete)
         }
@@ -75,8 +74,8 @@ struct TasksListView: View {
     }
 }
 
-struct TasksListView_Previews: PreviewProvider {
+struct TasksView_Previews: PreviewProvider {
     static var previews: some View {
-        TasksListView(document: .constant(createMockProjectDocument()))
+        TasksView(document: .constant(createMockProjectDocument()))
     }
 }
