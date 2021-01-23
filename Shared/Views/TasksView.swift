@@ -28,15 +28,14 @@ struct TasksView: View {
                     let fontSize = CGFloat(25.0)
                     #endif
                     
-                    Image(systemName: circle)
-                        .font(.system(size: fontSize))
-                        .foregroundColor(taskDone ? .blue : .gray)
-                        .gesture(
-                            TapGesture()
-                                .onEnded { _ in
-//                                    self.toggleTaskDone(index: index)
-                                }
-                        )
+                    Button(action: {
+                        self.toggleTaskDone(index: index)
+                    }) {
+                        Image(systemName: circle)
+                            .font(.system(size: fontSize))
+                            .foregroundColor(taskDone ? .blue : .gray)
+                    }
+                    .buttonStyle(PlainButtonStyle())
                     
                     VStack {
                         TextField("Task", text: $document.project.tasks[index].name, onEditingChanged: { (editingChanged) in
@@ -107,11 +106,11 @@ struct TasksView: View {
         }
     }
     
-//    private func toggleTaskDone(index: Int) {
+    private func toggleTaskDone(index: Int) {
 //        document.project.tasks[index].status === Task.TaskStatus.done
-//            ? document.project.tasks[index].status = Task.TaskStatus.doing
+//            ? document.project.tasks[index].status = Task.TaskStatus.todo
 //            : document.project.tasks[index].status = Task.TaskStatus.done
-//    }
+    }
     
     private func confirmDelete(offsets: IndexSet) {
         withAnimation {
