@@ -15,27 +15,6 @@ struct TasksView: View {
     
     var body: some View {
         VStack {
-            let doneTasks = document.project.tasks.filter { $0.status == .done }
-            let doneTasksCount = doneTasks.count
-            
-            HStack {
-                let tasksLabel = doneTasksCount == 1 ? "task" : "tasks"
-                Text("\(doneTasksCount) \(tasksLabel) done")
-                
-                Spacer()
-                
-                let buttonText = document.project.settings.showDoneTasks ? "Hide" : "Show"
-                Button(action: {
-                    document.project.settings.showDoneTasks.toggle()
-                }) {
-                    Text(buttonText)
-                        .foregroundColor(.accentColor)
-                }
-                .buttonStyle(PlainButtonStyle())
-            }
-            .padding(.horizontal)
-            .padding(.top, 5)
-            
             List(selection: $selection) {
                 ForEach(document.project.tasks.indices, id: \.self) { index in
                     let task = document.project.tasks[index]
@@ -122,6 +101,20 @@ struct TasksView: View {
             ToolbarItem() {
                 Button(action: self.addTask) {
                     Label("Add Task", systemImage: "plus")
+                        .font(.system(size: 22.0))
+                }
+            }
+            
+            ToolbarItem() {
+                Menu {
+                    Button(action: { document.project.settings.showDoneTasks.toggle() }) {
+                        let showHide = document.project.settings.showDoneTasks ? "Hide" : "Show"
+                        let icon = document.project.settings.showDoneTasks ? "eye.slash" : "eye"
+                        Label("\(showHide) done tasks", systemImage: icon)
+                    }
+                }
+                label: {
+                    Image(systemName: "ellipsis.circle")
                         .font(.system(size: 22.0))
                 }
             }
