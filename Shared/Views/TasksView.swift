@@ -18,11 +18,18 @@ struct TasksView: View {
                 let task = document.project.tasks[index]
                 
                 HStack {
-                    let circle = task.status == Task.TaskStatus.done ? "largecircle.fill.circle" : "circle"
+                    let taskDone = task.status == Task.TaskStatus.done
+                    let circle = taskDone ? "largecircle.fill.circle" : "circle"
+                    
+                    #if os(macOS)
+                    let fontSize = CGFloat(20.0)
+                    #else
+                    let fontSize = CGFloat(25.0)
+                    #endif
                     
                     Image(systemName: circle)
-                        .font(.system(size: 20.0))
-                        .foregroundColor(.blue)
+                        .font(.system(size: fontSize))
+                        .foregroundColor(taskDone ? .blue : .gray)
                         .gesture(
                             TapGesture()
                                 .onEnded { _ in
@@ -31,11 +38,15 @@ struct TasksView: View {
                         )
                     
                     VStack {
-                        TextField("Task", text: $document.project.tasks[index].name)
+                        TextField("Task", text: $document.project.tasks[index].name, onEditingChanged: { (editingChanged) in
+                            self.selection = editingChanged ? index : nil
+                        })
                             .textFieldStyle(PlainTextFieldStyle())
                         
                         
-                        TextField("Notes", text: $document.project.tasks[index].notes)
+                        TextField("Notes", text: $document.project.tasks[index].notes, onEditingChanged: { (editingChanged) in
+                            self.selection = editingChanged ? index : nil
+                        })
                             .textFieldStyle(PlainTextFieldStyle())
                             .font(.system(size: 12))
                             .opacity(0.8)
@@ -44,8 +55,14 @@ struct TasksView: View {
                     Spacer()
                     
                     if self.selection == index {
+                        #if os(macOS)
+                        let fontSize = CGFloat(17.0)
+                        #else
+                        let fontSize = CGFloat(22.0)
+                        #endif
+                        
                         Image(systemName: "info.circle")
-                            .font(.system(size: 17.0))
+                            .font(.system(size: fontSize))
                             .foregroundColor(.white)
                             .gesture(
                                 TapGesture()
