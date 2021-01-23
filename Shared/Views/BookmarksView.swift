@@ -13,9 +13,14 @@ struct BookmarksView: View {
     
     var body: some View {
         List(selection: $selection) {
-            ForEach(document.project.bookmarks.indices, id: \.self) { index in
+            ForEach(document.project.bookmarks?.indices ?? 0..<0, id: \.self) { index in
+                let bookmark = Binding<Bookmark>(
+                    get: { self.document.project.bookmarks![index] },
+                    set: { self.document.project.bookmarks![index] = $0 }
+                )
+                
                 BookmarksListItemView(
-                    document: $document,
+                    bookmark: bookmark,
                     index: index
                 )
                 .padding(.vertical, 5)
@@ -41,30 +46,34 @@ struct BookmarksView: View {
     
     private func addBookmark() {
         withAnimation {
+            if self.document.project.bookmarks == nil {
+                self.document.project.bookmarks = []
+            }
+            
             let newBookmark = Bookmark()
-            self.document.project.bookmarks.append(newBookmark)
+            self.document.project.bookmarks?.append(newBookmark)
         }
     }
     
     private func deleteBookmark(offsets: IndexSet) {
         withAnimation {
             for offset in offsets {
-                self.document.project.bookmarks.remove(at: offset)
+                self.document.project.bookmarks?.remove(at: offset)
             }
         }
     }
 }
 
 fileprivate struct BookmarksListItemView: View {
-    @Binding var document: ProjectManagerDocument
+    @Binding var bookmark: Bookmark
     var index: Int
-
+    
     var body: some View {
         HStack(spacing: 10) {
-            TextField("Name", text: $document.project.bookmarks[index].name)
+            TextField("Name", text: self.$bookmark.name)
                 .textFieldStyle(PlainTextFieldStyle())
 
-            TextField("URL", text: $document.project.bookmarks[index].url)
+            TextField("URL", text: self.$bookmark.url)
                 .textFieldStyle(PlainTextFieldStyle())
         }
         .padding(.vertical, 5)

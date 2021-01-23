@@ -9,6 +9,6 @@ import Foundation
 
 struct Bookmark: Codable, Identifiable {
     var id = UUID()
-    var name: String?
-    var url: String?
+    var name: String = ""
+    var url: String = ""
 }
