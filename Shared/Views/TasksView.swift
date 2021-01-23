@@ -9,8 +9,9 @@ import SwiftUI
 
 struct TasksView: View {
     @Binding var document: ProjectManagerDocument
-    @State private var newTaskIndex: Int?
     @State private var selection: Int?
+    @State private var showEditTask: Bool = false
+    @State private var editTaskIndex: Int = -1
     
     var body: some View {
         List(selection: $selection) {
@@ -67,12 +68,16 @@ struct TasksView: View {
                             .gesture(
                                 TapGesture()
                                     .onEnded { _ in
-                                        print("Open!")
+                                        self.editTaskIndex = index
+                                        self.showEditTask = true
                                     }
                             )
                     }
                 }
                 .padding(.vertical, 5)
+                .sheet(isPresented: self.$showEditTask) {
+                    TasksEditView(document: $document, showEditTask: self.$showEditTask, index: self.$editTaskIndex)
+                }
             }
             .onDelete(perform: self.confirmDelete)
         }
@@ -90,7 +95,7 @@ struct TasksView: View {
         withAnimation {
             let newTask = Task()
             document.project.tasks.append(newTask)
-            newTaskIndex = document.project.tasks.count - 1
+            self.editTaskIndex = document.project.tasks.count - 1
         }
     }
     
@@ -106,6 +111,55 @@ struct TasksView: View {
                 document.project.tasks.remove(at: offset)
             }
         }
+    }
+}
+
+fileprivate struct TasksEditView: View {
+    @Binding var document: ProjectManagerDocument
+    @Binding var showEditTask: Bool
+    @Binding var index: Int
+    
+    var body: some View {
+        #if os(macOS)
+        TasksEditContentView(document: $document, showEditTask: self.$showEditTask, index: self.$index)
+            .frame(maxWidth: .infinity, maxHeight: 500)
+        #else
+        NavigationView {
+            TasksEditContentView(document: $document, showEditTask: self.$showEditTask, index: self.$index)
+                .navigationBarTitle(Text("Edit Task"), displayMode: .inline)
+                .navigationBarItems(trailing: Button(action: {
+                    self.showEditTask = false
+                }) {
+                    Text("Done").bold()
+                })
+        }
+        #endif
+    }
+}
+
+fileprivate struct TasksEditContentView: View {
+    @Binding var document: ProjectManagerDocument
+    @Binding var showEditTask: Bool
+    @Binding var index: Int
+    
+    var body: some View {
+        VStack(alignment: .leading) {
+            #if os(macOS)
+            Text("Edit Task")
+                .font(.system(size: 15.0))
+                .bold()
+            #endif
+            
+            TextField("Task", text: $document.project.tasks[index].name)
+            TextField("Notes", text: $document.project.tasks[index].notes)
+            
+            #if os(macOS)
+            Button("Close") {
+                self.showEditTask = false
+            }
+            #endif
+        }
+        .padding()
     }
 }
 
