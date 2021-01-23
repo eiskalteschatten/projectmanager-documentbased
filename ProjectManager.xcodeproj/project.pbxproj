@@ -25,6 +25,8 @@
 		9392F41A25BAC62A0049C937 /* Mocks.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9392F41825BAC62A0049C937 /* Mocks.swift */; };
 		93B8271725BC907B003F0361 /* QuickNoteModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93B8271625BC907B003F0361 /* QuickNoteModel.swift */; };
 		93B8271825BC907B003F0361 /* QuickNoteModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93B8271625BC907B003F0361 /* QuickNoteModel.swift */; };
+		93B8271E25BC91A1003F0361 /* QuickNotesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93B8271D25BC91A1003F0361 /* QuickNotesView.swift */; };
+		93B8271F25BC91A1003F0361 /* QuickNotesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93B8271D25BC91A1003F0361 /* QuickNotesView.swift */; };
 		93C84B7025BB7297001D9889 /* TasksView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93C84B6F25BB7297001D9889 /* TasksView.swift */; };
 		93C84B7125BB7297001D9889 /* TasksView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93C84B6F25BB7297001D9889 /* TasksView.swift */; };
 		93C84B8225BB7399001D9889 /* TaskModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93C84B8125BB7399001D9889 /* TaskModel.swift */; };
@@ -77,6 +79,7 @@
 		9392F40D25BAC5B90049C937 /* ProjectInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectInfoView.swift; sourceTree = "<group>"; };
 		9392F41825BAC62A0049C937 /* Mocks.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Mocks.swift; sourceTree = "<group>"; };
 		93B8271625BC907B003F0361 /* QuickNoteModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuickNoteModel.swift; sourceTree = "<group>"; };
+		93B8271D25BC91A1003F0361 /* QuickNotesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuickNotesView.swift; sourceTree = "<group>"; };
 		93C84B6F25BB7297001D9889 /* TasksView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TasksView.swift; sourceTree = "<group>"; };
 		93C84B8125BB7399001D9889 /* TaskModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskModel.swift; sourceTree = "<group>"; };
 		93D3829025BB39B700189D46 /* iOSImagePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = iOSImagePicker.swift; sourceTree = "<group>"; };
@@ -246,6 +249,7 @@
 				9392F40D25BAC5B90049C937 /* ProjectInfoView.swift */,
 				93C84B6F25BB7297001D9889 /* TasksView.swift */,
 				93E2BD4225BC7BC300FF0B1A /* BookmarksView.swift */,
+				93B8271D25BC91A1003F0361 /* QuickNotesView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -421,6 +425,7 @@
 				93E135AA25A32D1C003F7423 /* ProjectManagerDocument.swift in Sources */,
 				93E135A825A32D1C003F7423 /* ProjectManagerApp.swift in Sources */,
 				93502CD525BAF56200CC7402 /* DefaultProjectData.swift in Sources */,
+				93B8271E25BC91A1003F0361 /* QuickNotesView.swift in Sources */,
 				9392F41925BAC62A0049C937 /* Mocks.swift in Sources */,
 				93C84B7025BB7297001D9889 /* TasksView.swift in Sources */,
 				93B8271725BC907B003F0361 /* QuickNoteModel.swift in Sources */,
@@ -446,6 +451,7 @@
 				93E135A925A32D1C003F7423 /* ProjectManagerApp.swift in Sources */,
 				93E2BD3D25BC7A2F00FF0B1A /* BookmarkModel.swift in Sources */,
 				93502CD625BAF56200CC7402 /* DefaultProjectData.swift in Sources */,
+				93B8271F25BC91A1003F0361 /* QuickNotesView.swift in Sources */,
 				93E2FBC125BC47FA00ACFD93 /* SettingsModel.swift in Sources */,
 				9392F41A25BAC62A0049C937 /* Mocks.swift in Sources */,
 				9366CD0C25BAE04600B56A2D /* StateModel.swift in Sources */,
