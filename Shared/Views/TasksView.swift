@@ -10,9 +10,10 @@ import SwiftUI
 struct TasksView: View {
     @Binding var document: ProjectManagerDocument
     @State private var newTaskIndex: Int?
+    @State private var selection: Int?
     
     var body: some View {
-        List {
+        List(selection: $selection) {
             ForEach(document.project.tasks.indices, id: \.self) { index in
                 let task = document.project.tasks[index]
                 
@@ -33,9 +34,25 @@ struct TasksView: View {
                         TextField("Task", text: $document.project.tasks[index].name)
                             .textFieldStyle(PlainTextFieldStyle())
                         
+                        
                         TextField("Notes", text: $document.project.tasks[index].notes)
                             .textFieldStyle(PlainTextFieldStyle())
                             .font(.system(size: 12))
+                            .opacity(0.8)
+                    }
+                    
+                    Spacer()
+                    
+                    if self.selection == index {
+                        Image(systemName: "info.circle")
+                            .font(.system(size: 17.0))
+                            .foregroundColor(.white)
+                            .gesture(
+                                TapGesture()
+                                    .onEnded { _ in
+                                        print("Open!")
+                                    }
+                            )
                     }
                 }
                 .padding(.vertical, 5)
@@ -49,6 +66,7 @@ struct TasksView: View {
                 }
             }
         }
+        .navigationTitle("Tasks")
     }
     
     private func addTask() {
