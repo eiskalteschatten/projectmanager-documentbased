@@ -77,6 +77,7 @@ struct QuickNotesView: View {
 
 fileprivate struct QuickNoteView: View {
     @Binding var quickNote: QuickNote
+    @State private var showEditNote: Bool = false
     
     var body: some View {
         ZStack {
@@ -93,19 +94,50 @@ fileprivate struct QuickNoteView: View {
                     .foregroundColor(.black)
                     .multilineTextAlignment(/*@START_MENU_TOKEN@*/.leading/*@END_MENU_TOKEN@*/)
                     .lineLimit(10)
-                
-//                TextEditor(text: self.$quickNote.content)
-//                    .foregroundColor(.black)
-//                    .accentColor(.black)
-//                    .onAppear {
-//                        #if !os(macOS)
-//                        UITextView.appearance().backgroundColor = .clear
-//                        #endif
-//                    }
             }
             .frame(minWidth: 0, maxWidth: .infinity, minHeight: 0, maxHeight: .infinity, alignment: .topLeading)
             .padding(10)
         }
+        .sheet(isPresented: self.$showEditNote) {
+            QuickNoteEditView(quickNote: self.$quickNote, showEditNote: self.$showEditNote)
+        }
+        .gesture(
+            TapGesture()
+                .onEnded { _ in
+                    self.showEditNote.toggle()
+                }
+        )
+    }
+}
+
+fileprivate struct QuickNoteEditView: View {
+    @Binding var quickNote: QuickNote
+    @Binding var showEditNote: Bool
+    
+    var body: some View {
+        VStack(spacing: 15) {
+            HStack {
+                TextField("Note Name", text: self.$quickNote.name)
+                    .font(.system(size: 18, weight: .semibold))
+                    .foregroundColor(.black)
+                    .textFieldStyle(PlainTextFieldStyle())
+                
+                Spacer()
+                QuickNoteEditCloseButtonView(showEditNote: $showEditNote)
+            }
+            
+            TextEditor(text: self.$quickNote.content)
+                .foregroundColor(.black)
+                .accentColor(.black)
+                .onAppear {
+                    #if !os(macOS)
+                    UITextView.appearance().backgroundColor = .clear
+                    #endif
+                }
+        }
+        .padding()
+        .background(Color.yellow)
+        .macOS() { $0.frame(minWidth: 400, maxWidth: .infinity, minHeight: 400, maxHeight: 500) }
     }
 }
 
@@ -116,10 +148,31 @@ fileprivate extension NSTextView {
             backgroundColor = .clear
             drawsBackground = true
         }
-
     }
 }
 #endif
+
+fileprivate struct QuickNoteEditCloseButtonView: View {
+    @Binding var showEditNote: Bool
+    
+    var body: some View {
+        #if os(macOS)
+        let fontSize = CGFloat(20.0)
+        #else
+        let fontSize = CGFloat(25.0)
+        #endif
+        
+        Button(action: {
+            self.showEditNote = false
+        }) {
+            Image(systemName: "xmark.circle.fill")
+                .font(.system(size: fontSize))
+                .foregroundColor(.gray)
+        }
+        .buttonStyle(PlainButtonStyle())
+    }
+}
+
 
 struct QuickNotesView_Previews: PreviewProvider {
     static var previews: some View {
