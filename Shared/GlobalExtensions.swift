@@ -76,3 +76,14 @@ extension Date {
         return Calendar.current.date(byAdding: components, to: startOfDay)!
     }
 }
+
+#if os(macOS)
+extension NSTextView {
+    open override var frame: CGRect {
+        didSet {
+            backgroundColor = .clear
+            drawsBackground = true
+        }
+    }
+}
+#endif

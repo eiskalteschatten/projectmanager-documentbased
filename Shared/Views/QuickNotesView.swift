@@ -141,17 +141,6 @@ fileprivate struct QuickNoteEditView: View {
     }
 }
 
-#if os(macOS)
-fileprivate extension NSTextView {
-    open override var frame: CGRect {
-        didSet {
-            backgroundColor = .clear
-            drawsBackground = true
-        }
-    }
-}
-#endif
-
 fileprivate struct QuickNoteEditCloseButtonView: View {
     @Binding var showEditNote: Bool
     
