@@ -84,10 +84,7 @@ struct QuickNotesView: View {
         
         let newQuickNote = QuickNote()
         self.document.project.quickNotes?.append(newQuickNote)
-        
-//        let newNoteIndex = document.project.tasks.count - 1
-//        self.noteToEdit = self.$document.project.quickNotes[newNoteIndex]
-//        self.showEditNote = true
+        self.editNote(index: document.project.quickNotes!.count - 1)
     }
     
     private func editNote(index: Int) {
