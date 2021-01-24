@@ -12,6 +12,14 @@ struct QuickNotesView: View {
     @State private var showEditNote: Bool = false
     @State private var editNoteIndex: Int = 0
     
+    init(document: Binding<ProjectManagerDocument>) {
+        self._document = document
+        
+        #if !os(macOS)
+        UITextView.appearance().backgroundColor = .clear
+        #endif
+    }
+    
     private let columns = [
         GridItem(.adaptive(minimum: 200), alignment: .leading)
     ]
@@ -149,11 +157,6 @@ fileprivate struct QuickNoteEditView: View {
             TextEditor(text: quickNote.content)
                 .foregroundColor(.black)
                 .accentColor(.black)
-                .onAppear {
-                    #if !os(macOS)
-                    UITextView.appearance().backgroundColor = .clear
-                    #endif
-                }
         }
         .padding()
         .background(Color.yellow)
