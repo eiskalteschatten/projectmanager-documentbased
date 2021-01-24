@@ -91,7 +91,7 @@ fileprivate struct QuickNoteView: View {
                     .font(.system(size: 18, weight: .semibold))
                     .foregroundColor(.black)
 
-                ZStack(alignment: .leading) {
+                ZStack(alignment: .topLeading) {
                     if self.quickNote.content.isEmpty {
                         Text("Type note here...")
                             .foregroundColor(.black)
@@ -100,10 +100,9 @@ fileprivate struct QuickNoteView: View {
                     
                     TextEditor(text: self.$quickNote.content)
                         .foregroundColor(.black)
+                        .accentColor(.black)
                         .onAppear {
-                            #if os(macOS)
-                    //        NSTextView.drawBackground = false
-                            #else
+                            #if !os(macOS)
                             UITextView.appearance().backgroundColor = .clear
                             #endif
                         }
@@ -112,6 +111,18 @@ fileprivate struct QuickNoteView: View {
         }
     }
 }
+
+#if os(macOS)
+fileprivate extension NSTextView {
+    open override var frame: CGRect {
+        didSet {
+            backgroundColor = .clear
+            drawsBackground = true
+        }
+
+    }
+}
+#endif
 
 struct QuickNotesView_Previews: PreviewProvider {
     static var previews: some View {
