@@ -9,6 +9,8 @@ import SwiftUI
 
 struct QuickNotesView: View {
     @Binding var document: ProjectManagerDocument
+    @State private var showEditNote: Bool = false
+    @State private var noteToEdit: Binding<QuickNote>?
     
     private let columns = [
         GridItem(.adaptive(minimum: 200), alignment: .leading)
@@ -29,6 +31,14 @@ struct QuickNotesView: View {
                                 Text("New Note")
                                 Image(systemName: "plus")
                             }
+                            
+                            Button(action: {
+                                self.noteToEdit = quickNote
+                                self.showEditNote = true
+                            }) {
+                                Text("Edit Note")
+                                Image(systemName: "pencil")
+                            }
 
                             Divider()
 
@@ -37,6 +47,13 @@ struct QuickNotesView: View {
                                 Image(systemName: "trash")
                             }
                         }
+                        .gesture(
+                            TapGesture()
+                                .onEnded { _ in
+                                    self.noteToEdit = quickNote
+                                    self.showEditNote.toggle()
+                                }
+                        )
                 }
             }
             .frame(minWidth: 200, maxWidth: .infinity, minHeight: 0, maxHeight: .infinity, alignment: .topLeading)
@@ -55,6 +72,9 @@ struct QuickNotesView: View {
                         .font(.system(size: 22.0))
                 }
             }
+        }
+        .sheet(isPresented: self.$showEditNote) {
+            QuickNoteEditView(quickNote: self.noteToEdit!, showEditNote: self.$showEditNote)
         }
         .navigationTitle("Notes")
     }
@@ -77,7 +97,6 @@ struct QuickNotesView: View {
 
 fileprivate struct QuickNoteView: View {
     @Binding var quickNote: QuickNote
-    @State private var showEditNote: Bool = false
     
     var body: some View {
         ZStack {
@@ -98,15 +117,6 @@ fileprivate struct QuickNoteView: View {
             .frame(minWidth: 0, maxWidth: .infinity, minHeight: 0, maxHeight: .infinity, alignment: .topLeading)
             .padding(10)
         }
-        .sheet(isPresented: self.$showEditNote) {
-            QuickNoteEditView(quickNote: self.$quickNote, showEditNote: self.$showEditNote)
-        }
-        .gesture(
-            TapGesture()
-                .onEnded { _ in
-                    self.showEditNote.toggle()
-                }
-        )
     }
 }
 
