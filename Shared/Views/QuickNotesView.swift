@@ -86,28 +86,26 @@ fileprivate struct QuickNoteView: View {
                 .shadow(radius: 2)
         
             VStack(alignment: .leading, spacing: 5) {
-                TextField("Name", text: self.$quickNote.name)
-                    .textFieldStyle(PlainTextFieldStyle())
+                Text(self.quickNote.name)
                     .font(.system(size: 18, weight: .semibold))
                     .foregroundColor(.black)
 
-                ZStack(alignment: .topLeading) {
-                    if self.quickNote.content.isEmpty {
-                        Text("Type note here...")
-                            .foregroundColor(.black)
-                            .opacity(0.5)
-                    }
-                    
-                    TextEditor(text: self.$quickNote.content)
-                        .foregroundColor(.black)
-                        .accentColor(.black)
-                        .onAppear {
-                            #if !os(macOS)
-                            UITextView.appearance().backgroundColor = .clear
-                            #endif
-                        }
-                }
-            }.padding(10)
+                Text(self.quickNote.content)
+                    .foregroundColor(.black)
+                    .multilineTextAlignment(/*@START_MENU_TOKEN@*/.leading/*@END_MENU_TOKEN@*/)
+                    .lineLimit(10)
+                
+//                TextEditor(text: self.$quickNote.content)
+//                    .foregroundColor(.black)
+//                    .accentColor(.black)
+//                    .onAppear {
+//                        #if !os(macOS)
+//                        UITextView.appearance().backgroundColor = .clear
+//                        #endif
+//                    }
+            }
+            .frame(minWidth: 0, maxWidth: .infinity, minHeight: 0, maxHeight: .infinity, alignment: .topLeading)
+            .padding(10)
         }
     }
 }
