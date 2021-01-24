@@ -50,6 +50,8 @@
 		93E2BD4425BC7BC300FF0B1A /* BookmarksView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93E2BD4225BC7BC300FF0B1A /* BookmarksView.swift */; };
 		93E2FBC025BC47FA00ACFD93 /* SettingsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93E2FBBF25BC47FA00ACFD93 /* SettingsModel.swift */; };
 		93E2FBC125BC47FA00ACFD93 /* SettingsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93E2FBBF25BC47FA00ACFD93 /* SettingsModel.swift */; };
+		93FCCB0125BDA5F100AA2F70 /* ScreenCloseButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93FCCB0025BDA5F100AA2F70 /* ScreenCloseButtonView.swift */; };
+		93FCCB0625BDA62800AA2F70 /* ScreenCloseButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93FCCB0025BDA5F100AA2F70 /* ScreenCloseButtonView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -102,6 +104,7 @@
 		93E2BD3B25BC7A2F00FF0B1A /* BookmarkModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookmarkModel.swift; sourceTree = "<group>"; };
 		93E2BD4225BC7BC300FF0B1A /* BookmarksView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookmarksView.swift; sourceTree = "<group>"; };
 		93E2FBBF25BC47FA00ACFD93 /* SettingsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsModel.swift; sourceTree = "<group>"; };
+		93FCCB0025BDA5F100AA2F70 /* ScreenCloseButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScreenCloseButtonView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -245,6 +248,7 @@
 		93E135C225A32D67003F7423 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				93FCCAFF25BDA5E500AA2F70 /* Components */,
 				93E1358025A32D1C003F7423 /* ContentView.swift */,
 				9392F40D25BAC5B90049C937 /* ProjectInfoView.swift */,
 				93C84B6F25BB7297001D9889 /* TasksView.swift */,
@@ -252,6 +256,14 @@
 				93B8271D25BC91A1003F0361 /* QuickNotesView.swift */,
 			);
 			path = Views;
+			sourceTree = "<group>";
+		};
+		93FCCAFF25BDA5E500AA2F70 /* Components */ = {
+			isa = PBXGroup;
+			children = (
+				93FCCB0025BDA5F100AA2F70 /* ScreenCloseButtonView.swift */,
+			);
+			path = Components;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -427,6 +439,7 @@
 				93502CD525BAF56200CC7402 /* DefaultProjectData.swift in Sources */,
 				93B8271E25BC91A1003F0361 /* QuickNotesView.swift in Sources */,
 				9392F41925BAC62A0049C937 /* Mocks.swift in Sources */,
+				93FCCB0125BDA5F100AA2F70 /* ScreenCloseButtonView.swift in Sources */,
 				93C84B7025BB7297001D9889 /* TasksView.swift in Sources */,
 				93B8271725BC907B003F0361 /* QuickNoteModel.swift in Sources */,
 				9366CD0B25BAE04600B56A2D /* StateModel.swift in Sources */,
@@ -459,6 +472,7 @@
 				93B8271825BC907B003F0361 /* QuickNoteModel.swift in Sources */,
 				93D60F3825BA32D40040DE9F /* ProjectModel.swift in Sources */,
 				9392F40F25BAC5B90049C937 /* ProjectInfoView.swift in Sources */,
+				93FCCB0625BDA62800AA2F70 /* ScreenCloseButtonView.swift in Sources */,
 				93C84B8325BB7399001D9889 /* TaskModel.swift in Sources */,
 				93E135AD25A32D1C003F7423 /* ContentView.swift in Sources */,
 				93E2BD4425BC7BC300FF0B1A /* BookmarksView.swift in Sources */,
