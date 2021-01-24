@@ -23,20 +23,20 @@ struct QuickNotesView: View {
                         set: { self.document.project.quickNotes![index] = $0 }
                     )
                     
-                    QuickNoteView(quickNote: quickNote, index: index)
-                    .contextMenu {
-                        Button(action: self.addNote) {
-                            Text("New Note")
-                            Image(systemName: "plus")
-                        }
+                    QuickNoteView(quickNote: quickNote)
+                        .contextMenu {
+                            Button(action: self.addNote) {
+                                Text("New Note")
+                                Image(systemName: "plus")
+                            }
 
-                        Divider()
+                            Divider()
 
-                        Button(action: { self.deleteNote(offsets: [index]) }) {
-                            Text("Delete Note")
-                            Image(systemName: "trash")
+                            Button(action: { self.deleteNote(offsets: [index]) }) {
+                                Text("Delete Note")
+                                Image(systemName: "trash")
+                            }
                         }
-                    }
                 }
             }
             .frame(minWidth: 200, maxWidth: .infinity, minHeight: 0, maxHeight: .infinity, alignment: .topLeading)
@@ -77,7 +77,6 @@ struct QuickNotesView: View {
 
 fileprivate struct QuickNoteView: View {
     @Binding var quickNote: QuickNote
-    var index: Int
     
     var body: some View {
         ZStack {
@@ -85,11 +84,11 @@ fileprivate struct QuickNoteView: View {
                 .fill(Color.yellow)
                 .shadow(radius: 2)
         
-            VStack(alignment: .leading, spacing: 5) {
+            VStack(alignment: .leading, spacing: 15) {
                 Text(self.quickNote.name)
                     .font(.system(size: 18, weight: .semibold))
                     .foregroundColor(.black)
-
+                
                 Text(self.quickNote.content)
                     .foregroundColor(.black)
                     .multilineTextAlignment(/*@START_MENU_TOKEN@*/.leading/*@END_MENU_TOKEN@*/)

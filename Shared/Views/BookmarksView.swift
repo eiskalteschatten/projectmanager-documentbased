@@ -19,7 +19,7 @@ struct BookmarksView: View {
                     set: { self.document.project.bookmarks![index] = $0 }
                 )
                 
-                BookmarksListItemView(bookmark: bookmark, index: index)
+                BookmarksListItemView(bookmark: bookmark)
                     .padding(.vertical, 5)
                     .contextMenu {
                         Button(action: self.addBookmark) {
@@ -76,9 +76,7 @@ struct BookmarksView: View {
 
 fileprivate struct BookmarksListItemView: View {
     @Environment(\.openURL) var openURL
-    
     @Binding var bookmark: Bookmark
-    var index: Int
     
     var body: some View {
         #if os(macOS)
