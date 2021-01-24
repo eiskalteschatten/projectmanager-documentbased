@@ -10,7 +10,7 @@ import SwiftUI
 struct QuickNotesView: View {
     @Binding var document: ProjectManagerDocument
     @State private var showEditNote: Bool = false
-    @State private var noteToEdit: Binding<QuickNote>?
+    @State private var editNoteIndex: Int = 0
     
     private let columns = [
         GridItem(.adaptive(minimum: 200), alignment: .leading)
@@ -33,8 +33,7 @@ struct QuickNotesView: View {
                             }
                             
                             Button(action: {
-                                self.noteToEdit = quickNote
-                                self.showEditNote = true
+                                self.editNote(index: index)
                             }) {
                                 Text("Edit Note")
                                 Image(systemName: "pencil")
@@ -50,8 +49,7 @@ struct QuickNotesView: View {
                         .gesture(
                             TapGesture()
                                 .onEnded { _ in
-                                    self.noteToEdit = quickNote
-                                    self.showEditNote.toggle()
+                                    self.editNote(index: index)
                                 }
                         )
                 }
@@ -74,7 +72,7 @@ struct QuickNotesView: View {
             }
         }
         .sheet(isPresented: self.$showEditNote) {
-            QuickNoteEditView(quickNote: self.noteToEdit!, showEditNote: self.$showEditNote)
+            QuickNoteEditView(document: self.$document, showEditNote: self.$showEditNote, index: self.editNoteIndex)
         }
         .navigationTitle("Notes")
     }
@@ -86,6 +84,15 @@ struct QuickNotesView: View {
         
         let newQuickNote = QuickNote()
         self.document.project.quickNotes?.append(newQuickNote)
+        
+//        let newNoteIndex = document.project.tasks.count - 1
+//        self.noteToEdit = self.$document.project.quickNotes[newNoteIndex]
+//        self.showEditNote = true
+    }
+    
+    private func editNote(index: Int) {
+        self.editNoteIndex = index
+        self.showEditNote = true
     }
     
     private func deleteNote(offsets: IndexSet) {
@@ -121,13 +128,19 @@ fileprivate struct QuickNoteView: View {
 }
 
 fileprivate struct QuickNoteEditView: View {
-    @Binding var quickNote: QuickNote
+    @Binding var document: ProjectManagerDocument
     @Binding var showEditNote: Bool
+    var index: Int
     
     var body: some View {
-        VStack(spacing: 15) {
+        let quickNote = Binding<QuickNote>(
+            get: { self.document.project.quickNotes![index] },
+            set: { self.document.project.quickNotes![index] = $0 }
+        )
+        
+        return VStack(spacing: 15) {
             HStack {
-                TextField("Note Name", text: self.$quickNote.name)
+                TextField("Note Name", text: quickNote.name)
                     .font(.system(size: 18, weight: .semibold))
                     .foregroundColor(.black)
                     .textFieldStyle(PlainTextFieldStyle())
@@ -136,7 +149,7 @@ fileprivate struct QuickNoteEditView: View {
                 QuickNoteEditCloseButtonView(showEditNote: $showEditNote)
             }
             
-            TextEditor(text: self.$quickNote.content)
+            TextEditor(text: quickNote.content)
                 .foregroundColor(.black)
                 .accentColor(.black)
                 .onAppear {
