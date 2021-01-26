@@ -33,7 +33,13 @@ struct QuickNotesView: View {
                         set: { self.document.project.quickNotes![index] = $0 }
                     )
                     
-                    QuickNoteView(quickNote: quickNote)
+                    VStack {
+                        QuickNoteView(
+                            quickNote: quickNote,
+                            showEditNote: self.$showEditNote,
+                            editNoteIndex: self.$editNoteIndex,
+                            index: index
+                        )
                         .contextMenu {
                             Button(action: self.addNote) {
                                 Text("New Note")
@@ -60,6 +66,7 @@ struct QuickNotesView: View {
                                     self.editNote(index: index)
                                 }
                         )
+                    }
                 }
             }
             .frame(minWidth: 200, maxWidth: .infinity, minHeight: 0, maxHeight: .infinity, alignment: .topLeading)
@@ -109,6 +116,9 @@ struct QuickNotesView: View {
 
 fileprivate struct QuickNoteView: View {
     @Binding var quickNote: QuickNote
+    @Binding var showEditNote: Bool
+    @Binding var editNoteIndex: Int
+    var index: Int
     
     var body: some View {
         ZStack {
@@ -116,7 +126,7 @@ fileprivate struct QuickNoteView: View {
                 .fill(Color.yellow)
                 .shadow(radius: 2)
         
-            VStack(alignment: .leading, spacing: 15) {
+            VStack(alignment: .leading, spacing: 10) {
                 Text(self.quickNote.name)
                     .font(.system(size: 18, weight: .semibold))
                     .foregroundColor(.black)
@@ -125,6 +135,15 @@ fileprivate struct QuickNoteView: View {
                     .foregroundColor(.black)
                     .multilineTextAlignment(/*@START_MENU_TOKEN@*/.leading/*@END_MENU_TOKEN@*/)
                     .lineLimit(10)
+                
+                Spacer()
+                
+                QuickNoteToolbarView(
+                    quickNote: self.$quickNote,
+                    showEditNote: self.$showEditNote,
+                    editNoteIndex: self.$editNoteIndex,
+                    index: self.index
+                )
             }
             .frame(minWidth: 0, maxWidth: .infinity, minHeight: 0, maxHeight: .infinity, alignment: .topLeading)
             .padding(10)
@@ -161,6 +180,45 @@ fileprivate struct QuickNoteEditView: View {
         .padding()
         .background(Color.yellow)
         .macOS() { $0.frame(minWidth: 400, maxWidth: .infinity, minHeight: 400, maxHeight: 500) }
+    }
+}
+
+fileprivate struct QuickNoteToolbarView: View {
+    @Binding var quickNote: QuickNote
+    @Binding var showEditNote: Bool
+    @Binding var editNoteIndex: Int
+    var index: Int
+    
+    var body: some View {
+        HStack(spacing: 15) {
+            #if os(macOS)
+            let fontSize = CGFloat(15.0)
+            #else
+            let fontSize = CGFloat(20.0)
+            #endif
+            
+            Button(action: {
+                self.editNoteIndex = index
+                self.showEditNote = true
+            }) {
+                Image(systemName: "pencil")
+                    .font(.system(size: fontSize))
+                    .foregroundColor(.black)
+            }
+            .buttonStyle(PlainButtonStyle())
+            
+            Spacer()
+            
+            Button(action: {
+                self.editNoteIndex = index
+                self.showEditNote = true
+            }) {
+                Image(systemName: "trash")
+                    .font(.system(size: fontSize))
+                    .foregroundColor(.black)
+            }
+            .buttonStyle(PlainButtonStyle())
+        }
     }
 }
 
