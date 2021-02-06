@@ -28,14 +28,9 @@ struct QuickNotesView: View {
         ScrollView {
             LazyVGrid(columns: columns, alignment: .leading, spacing: 10) {
                 ForEach(document.project.quickNotes?.indices ?? 0..<0, id: \.self) { index in
-                    let quickNote = Binding<QuickNote>(
-                        get: { self.document.project.quickNotes![index] },
-                        set: { self.document.project.quickNotes![index] = $0 }
-                    )
-                    
                     VStack {
                         QuickNoteView(
-                            quickNote: quickNote,
+                            document: self.$document,
                             showEditNote: self.$showEditNote,
                             editNoteIndex: self.$editNoteIndex,
                             index: index
@@ -60,13 +55,13 @@ struct QuickNotesView: View {
                                 Image(systemName: "trash")
                             }
                         }
-                        .gesture(
-                            TapGesture()
-                                .onEnded { _ in
-                                    self.editNote(index: index)
-                                }
-                        )
                     }
+                    .gesture(
+                        TapGesture()
+                            .onEnded { _ in
+                                self.editNote(index: index)
+                            }
+                    )
                 }
             }
             .frame(minWidth: 200, maxWidth: .infinity, minHeight: 0, maxHeight: .infinity, alignment: .topLeading)
@@ -116,31 +111,38 @@ struct QuickNotesView: View {
 
 fileprivate struct QuickNoteView: View {
     @State private var hover: Bool = false
-    @Binding var quickNote: QuickNote
+    @Binding var document: ProjectManagerDocument
     @Binding var showEditNote: Bool
     @Binding var editNoteIndex: Int
     var index: Int
     
     var body: some View {
-        ZStack {
+        let quickNote = Binding<QuickNote>(
+            get: { self.document.project.quickNotes![index] },
+            set: { self.document.project.quickNotes![index] = $0 }
+        )
+        
+        return ZStack {
             RoundedRectangle(cornerRadius: 5, style: .continuous)
                 .fill(Color.yellow)
                 .shadow(radius: 2)
         
             VStack(alignment: .leading, spacing: 10) {
-                Text(self.quickNote.name)
-                    .font(.system(size: 18, weight: .semibold))
-                    .foregroundColor(.black)
-                
-                Text(self.quickNote.content)
-                    .foregroundColor(.black)
-                    .multilineTextAlignment(/*@START_MENU_TOKEN@*/.leading/*@END_MENU_TOKEN@*/)
-                    .lineLimit(10)
-                
-                Spacer()
+                Group {
+                    Text(quickNote.name.wrappedValue)
+                        .font(.system(size: 18, weight: .semibold))
+                        .foregroundColor(.black)
+                    
+                    Text(quickNote.content.wrappedValue)
+                        .foregroundColor(.black)
+                        .multilineTextAlignment(/*@START_MENU_TOKEN@*/.leading/*@END_MENU_TOKEN@*/)
+                        .lineLimit(10)
+                    
+                    Spacer()
+                }
                 
                 QuickNoteToolbarView(
-                    quickNote: self.$quickNote,
+                    document: self.$document,
                     showEditNote: self.$showEditNote,
                     editNoteIndex: self.$editNoteIndex,
                     index: self.index
@@ -193,7 +195,7 @@ fileprivate struct QuickNoteEditView: View {
 }
 
 fileprivate struct QuickNoteToolbarView: View {
-    @Binding var quickNote: QuickNote
+    @Binding var document: ProjectManagerDocument
     @Binding var showEditNote: Bool
     @Binding var editNoteIndex: Int
     var index: Int
@@ -219,8 +221,7 @@ fileprivate struct QuickNoteToolbarView: View {
             Spacer()
             
             Button(action: {
-                self.editNoteIndex = index
-                self.showEditNote = true
+                self.document.project.quickNotes?.remove(at: index)
             }) {
                 Image(systemName: "trash")
                     .font(.system(size: fontSize))
