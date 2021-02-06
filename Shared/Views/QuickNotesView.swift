@@ -115,6 +115,7 @@ struct QuickNotesView: View {
 }
 
 fileprivate struct QuickNoteView: View {
+    @State private var hover: Bool = false
     @Binding var quickNote: QuickNote
     @Binding var showEditNote: Bool
     @Binding var editNoteIndex: Int
@@ -144,9 +145,17 @@ fileprivate struct QuickNoteView: View {
                     editNoteIndex: self.$editNoteIndex,
                     index: self.index
                 )
+                .macOS() {
+                    $0.opacity(self.hover ? 1.0 : 0.0)
+                }
             }
             .frame(minWidth: 0, maxWidth: .infinity, minHeight: 0, maxHeight: .infinity, alignment: .topLeading)
             .padding(10)
+            .macOS() {
+                $0.onHover { _ in
+                    self.hover.toggle()
+                }
+            }
         }
     }
 }
