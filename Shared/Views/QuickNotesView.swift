@@ -210,7 +210,7 @@ fileprivate struct QuickNoteToolbarView: View {
                 self.editNoteIndex = index
                 self.showEditNote = true
             }) {
-                Image(systemName: "pencil")
+                Image(systemName: "square.and.pencil")
                     .font(.system(size: fontSize))
                     .foregroundColor(.black)
             }
