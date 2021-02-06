@@ -82,7 +82,12 @@ struct QuickNotesView: View {
             }
         }
         .sheet(isPresented: self.$showEditNote) {
-            QuickNoteEditView(document: self.$document, showEditNote: self.$showEditNote, index: self.editNoteIndex)
+            QuickNoteEditView(
+                document: self.$document,
+                showEditNote: self.$showEditNote,
+                editNoteIndex: self.$editNoteIndex,
+                index: self.editNoteIndex
+            )
         }
         .navigationTitle("Notes")
     }
@@ -165,6 +170,7 @@ fileprivate struct QuickNoteView: View {
 fileprivate struct QuickNoteEditView: View {
     @Binding var document: ProjectManagerDocument
     @Binding var showEditNote: Bool
+    @Binding var editNoteIndex: Int
     var index: Int
     
     var body: some View {
@@ -187,6 +193,14 @@ fileprivate struct QuickNoteEditView: View {
             TextEditor(text: quickNote.content)
                 .foregroundColor(.black)
                 .accentColor(.black)
+            
+            QuickNoteToolbarView(
+                document: self.$document,
+                showEditNote: self.$showEditNote,
+                editNoteIndex: self.$editNoteIndex,
+                index: self.index,
+                isEditingToolbar: true
+            )
         }
         .padding()
         .background(Color.yellow)
@@ -199,6 +213,7 @@ fileprivate struct QuickNoteToolbarView: View {
     @Binding var showEditNote: Bool
     @Binding var editNoteIndex: Int
     var index: Int
+    var isEditingToolbar: Bool = false
     
     var body: some View {
         HStack(spacing: 15) {
@@ -208,15 +223,17 @@ fileprivate struct QuickNoteToolbarView: View {
             let fontSize = CGFloat(20.0)
             #endif
             
-            Button(action: {
-                self.editNoteIndex = index
-                self.showEditNote = true
-            }) {
-                Image(systemName: "square.and.pencil")
-                    .font(.system(size: fontSize))
-                    .foregroundColor(.black)
+            if !self.isEditingToolbar {
+                Button(action: {
+                    self.editNoteIndex = index
+                    self.showEditNote = true
+                }) {
+                    Image(systemName: "square.and.pencil")
+                        .font(.system(size: fontSize))
+                        .foregroundColor(.black)
+                }
+                .buttonStyle(PlainButtonStyle())
             }
-            .buttonStyle(PlainButtonStyle())
             
             Spacer()
             
